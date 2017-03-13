@@ -6,21 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>机器学习－周志华－第五章习题 | 翠西的烂笔头</title>
+  <title>Archives: 2017/3 | 翠西的烂笔头</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="5.1 试述将线型函数\(y = \omega^Tx\)用作神经元激活函数的缺陷.线型激活函数就等同于线性回归， 当样本不能线型可分的时候，不能很好的对样本分类。
-5.2 试述使用图5.2(b)激活函数的神经元与对率回归的联系。图5.2(b)是sigmoid函数，当使用sigmoid函数作为激活函数时\(y = \frac{1}{1 + e^{-(\omega^Tx + b)}}\)；用Logis">
-<meta property="og:type" content="article">
-<meta property="og:title" content="机器学习－周志华－第五章习题">
-<meta property="og:url" content="http://yoursite.com/2016/12/06/机器学习第五章/index.html">
+  <meta name="description" content="一个有趣的人。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="翠西的烂笔头">
+<meta property="og:url" content="http://yoursite.com/archives/2017/03/index.html">
 <meta property="og:site_name" content="翠西的烂笔头">
-<meta property="og:description" content="5.1 试述将线型函数\(y = \omega^Tx\)用作神经元激活函数的缺陷.线型激活函数就等同于线性回归， 当样本不能线型可分的时候，不能很好的对样本分类。
-5.2 试述使用图5.2(b)激活函数的神经元与对率回归的联系。图5.2(b)是sigmoid函数，当使用sigmoid函数作为激活函数时\(y = \frac{1}{1 + e^{-(\omega^Tx + b)}}\)；用Logis">
-<meta property="og:updated_time" content="2016-12-19T00:20:37.000Z">
+<meta property="og:description" content="一个有趣的人。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机器学习－周志华－第五章习题">
-<meta name="twitter:description" content="5.1 试述将线型函数\(y = \omega^Tx\)用作神经元激活函数的缺陷.线型激活函数就等同于线性回归， 当样本不能线型可分的时候，不能很好的对样本分类。
-5.2 试述使用图5.2(b)激活函数的神经元与对率回归的联系。图5.2(b)是sigmoid函数，当使用sigmoid函数作为激活函数时\(y = \frac{1}{1 + e^{-(\omega^Tx + b)}}\)；用Logis">
+<meta name="twitter:title" content="翠西的烂笔头">
+<meta name="twitter:description" content="一个有趣的人。">
   
   
     <link rel="icon" href="/assets/image/favicon.png">
@@ -139,106 +135,54 @@
 </nav>
 
       <div class="body-wrap">
-        <article id="post-机器学习第五章" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      机器学习－周志华－第五章习题
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/03/12/听沈诞琦谈《中国特色的译文读者》/" class="archive-article-date">
+  	<time datetime="2017-03-13T02:50:10.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-03-12</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/03/12/听沈诞琦谈《中国特色的译文读者》/">听沈诞琦谈《中国特色的译文读者》</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script><br>5.1 试述将线型函数\(y = \omega^Tx\)用作神经元激活函数的缺陷.<br>线型激活函数就等同于线性回归， 当样本不能线型可分的时候，不能很好的对样本分类。</p>
-<p>5.2 试述使用图5.2(b)激活函数的神经元与对率回归的联系。<br>图5.2(b)是sigmoid函数，当使用sigmoid函数作为激活函数时\(y = \frac{1}{1 + e^{-(\omega^Tx + b)}}\)；用Logistic regression做分类的时候\(y = \frac{1}{1 + e^{-(\omega^Tx + b)}}\)；所以使用sigmoid函数作为激活函数的神经元，是在解决一个对率回归问题。</p>
-<p>5.3 对于图5.7中的\(\upsilon\)试推导出BP算法中的更新公式5.13.<br>$$\Delta \upsilon_{ih} = - \eta \frac{\partial E_k}{\partial \upsilon_i}$$<br>$$ = \frac{\partial E_k}{\partial b_h} \frac{\partial b_h}{\partial \alpha_h} \frac{\partial \alpha_h}{\partial \upsilon_i}$$<br>其中$$e_h = - \frac{\partial E_k}{\partial b_h} \frac{\partial b_h}{\partial \alpha_h}$$<br>$$\frac{\partial \alpha_h}{\partial \upsilon_i} = x_i$$<br>所以\(\Delta \upsilon_i = \eta e_h x_i\).</p>
-<p>5.4 试述式(5.6)中学习率的取值对神经网络的影响。<br>学习率设置太小，则收敛得慢，迭代次数多；学习率设置太大则容易振荡，来回波动却找不到最优值。</p>
-<p>To be continued…<br>5.5 试编程实现标准BP算法和累积BP算法，在西瓜数据集3.0上分别用这两个算法训练一个单隐层网络，并进行比较。</p>
-<p>5.6 试设计一个BP改进算法，能通过动态调整学习率显著提高收敛速度。编程实现该算法，并选择两个UCI数据集与标准BP算法比较。</p>
-<p>5.7 根据式5.18和5.19，试构造一个能解决异或问题的单层RBF神经网络。</p>
-<p>5.8 从网上下载或自己编程实现一个SOM网络，并观察在西瓜数据集3.0a上产生的结果。</p>
-<p>5.9 试推导用于Elman网络的BP算法。</p>
-<p>5.10 实现一个卷积神经网络。</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/12/06/机器学习第五章/" class="archive-article-date">
-  	<time datetime="2016-12-07T04:34:57.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-06</time>
-</a>
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书/">读书</a></li></ul>
 	</div>
 
-      
+          
 
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2016/12/07/用Markdown写公式/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          用Markdown写公式
-        
-      </div>
-    </a>
   
   
-    <a href="/2016/12/04/我们夜里在美术馆谈恋爱/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">读书｜理想主义者的出路</div>
-      <i class="icon-circle-right"></i>
-    </a>
+    </div></section>
   
-</nav>
 
-
-
-
-<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-
-
-
-
-
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="机器学习第五章" data-title="机器学习－周志华－第五章习题" data-url="http://yoursite.com/2016/12/06/机器学习第五章/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"tracycuican"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-
-
+    
 
 
       </div>
@@ -261,8 +205,8 @@
 		mathjax: false,
 		animate: true,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
