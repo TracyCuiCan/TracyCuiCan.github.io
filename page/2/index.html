@@ -137,6 +137,69 @@
       <div class="body-wrap">
         
   
+    <article id="post-Link-Spark-with-Jupyter-Notebook" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/Link-Spark-with-Jupyter-Notebook/">Link Spark with Jupyter Notebook.</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>I’ve been using jupyter notebook for a while, but I am new to spark. I was following a notes with Spark and want to use Apache Spark in Jupyter notebook. So I googled online, there seems to be a <a href="https://gist.github.com/tommycarpi/f5a67c66a8f2170e263c" target="_blank" rel="external">working solution</a> to most people. However, I followed every single step of the instruction, it doesn’t work for me. Terminal keeps complaining about “pyspark: command not found”. So I believed in my instincts and tried my luck and it worked! Here is my solution to link Spark with jupyter notebook. Although I still don’t know why the previous solution didn’t work for me. </p>
+<h3 id="Install-Apache-Spark"><a href="#Install-Apache-Spark" class="headerlink" title="Install Apache Spark"></a>Install Apache Spark</h3><p><a href="https://spark.apache.org/downloads.html" target="_blank" rel="external">Download</a> a pre-build version of Apache Spark, mine was the latest so far spark-2.1.0-bin-hadoop2.7.</p>
+<h3 id="Install-Jupyter-notebook"><a href="#Install-Jupyter-notebook" class="headerlink" title="Install Jupyter notebook"></a>Install Jupyter notebook</h3><p><a href="https://www.continuum.io/downloads#_macosx" target="_blank" rel="external">Download</a> and install Anaconda.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">conda install jupyter</div><div class="line">conda update jupyter</div></pre></td></tr></table></figure></p>
+<h3 id="Link-them-together"><a href="#Link-them-together" class="headerlink" title="Link them together"></a>Link them together</h3><p>First, we need to set jupyter spark as pyspark driver (I guess?).</p>
+<p>Go to your spark folder, find the pyspark script.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi pyspark</div></pre></td></tr></table></figure></p>
+<p>At the end of it, you will see<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export PYSPARK_DRIVER_PYTHON</div><div class="line">export PYSPARK_DRIVER_PYTHON_OPTS</div></pre></td></tr></table></figure></p>
+<p>Add jupyter notebook as the driver, so the the above two lines become:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export PYSPARK_DRIVER_PYTHON=jupyter</div><div class="line">export PYSPARK_DRIVER_PYTHON_OPTS=&apos;notebook&apos; pyspark</div></pre></td></tr></table></figure></p>
+<p>Now if you do <code>pyspark</code> inside /bin, it will open jupyter notebook.</p>
+<p>Then we try to make pyspark command recognizable everywhere.</p>
+<p>Open terminal do <code>ls -al</code> and find the .bash_profile. Inside it add one line:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export PATH=&quot;the_absolute_path_to_your_spark_bin:$PATH&quot;</div></pre></td></tr></table></figure></p>
+<p>You could find the path by doing <code>pwd</code> in your spark_folder/bin.</p>
+<p>Now if you do ‘pyspark’ anywhere, it will open jupyter notebook and you can use spark in it!</p>
+<p>Note: You can still use <code>jupyter notebook</code> to run normal jupyter notebook. But if you want to write Spark code in your jupyter notebook, you should use <code>pyspark</code> instead.</p>
+<p>Have fun!</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/03/22/Link-Spark-with-Jupyter-Notebook/" class="archive-article-date">
+  	<time datetime="2017-03-23T03:05:44.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-03-22</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-听沈诞琦谈《中国特色的译文读者》" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -752,66 +815,9 @@
 
 
   
-    <article id="post-Hello-World" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/14/Hello-World/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World!"></a>Hello World!</h1><p>试了两个晚上终于把githubio和hexo设置好了，换过很多写东西的地方，从最开始的QQ空间（呵呵），到豆瓣，还搞过wordpress，现在决定长期驻扎在此，但愿能坚持下去。</p>
-<p>写字的诉求最开始是要源于要倾诉的欲望，后来觉得时常纪录是个值得坚持的好事情，如果还能跟他人分享就更好。就像我以前不喜欢拍照，觉得一切看在眼里记在心里，可是无奈脑容量有限，记忆会慢慢消散，记忆也会骗人。还是俗话说的好</p>
-<blockquote>
-<p>好记性不如烂笔头。 </p>
-</blockquote>
-<p>以后会定期纪录学习笔记，读书笔记，电影观后感，游记，或者仅仅是一时心情，任何事情。</p>
-<p>一个新的开始！</p>
-<p>配图一张，8月底于英国南部Eastburne. 在悬崖上面朝大海，每次看到心情都爽朗开阔。<br><img src="/images/hello_world.jpg" alt=""></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/11/14/Hello-World/" class="archive-article-date">
-  	<time datetime="2016-11-15T03:20:22.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-14</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -872,7 +878,7 @@
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/all/" style="font-size: 20px;">all</a> <a href="/tags/技术/" style="font-size: 16.67px;">技术</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/杂/" style="font-size: 16.67px;">杂</a> <a href="/tags/电影/" style="font-size: 13.33px;">电影</a> <a href="/tags/读书/" style="font-size: 16.67px;">读书</a> <a href="/tags/随想/" style="font-size: 16.67px;">随想</a>
+    				<a href="/tags/all/" style="font-size: 20px;">all</a> <a href="/tags/技术/" style="font-size: 15px;">技术</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/杂/" style="font-size: 17.5px;">杂</a> <a href="/tags/电影/" style="font-size: 12.5px;">电影</a> <a href="/tags/读书/" style="font-size: 15px;">读书</a> <a href="/tags/随想/" style="font-size: 15px;">随想</a>
     			</div>
     	</section>
     
