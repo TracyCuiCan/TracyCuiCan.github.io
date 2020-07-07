@@ -6,39 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://tracycuican.github.io">
-  <title>Installation log | --async</title>
+  <title>Notes for NLP Week1 | --async</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="My installation log
-homebrew
-XCode 7.2
-gcc 7.1.0
-python 3.6.1
-anaconda 4.4.0
-Uninstalled spark, need to reinstall with python3
-Uninstalled tensorflow, need to reinstall with python3">
+  <meta name="description" content="Logistic RegressionTwitter text data preprocessing steps:
+Stem from nltk.stem import PorterStemmer
+Remove special symbols
+ 123456789# remove stock market tickers like $GE   tweet = re.sub(r&amp;apos;\$\w*">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Installation log">
-<meta property="og:url" content="https://tracycuican.github.io/2017/06/17/Installation-log/index.html">
+<meta property="og:title" content="Notes for NLP Week1">
+<meta property="og:url" content="https://tracycuican.github.io/2020/07/06/nlp-wk1/index.html">
 <meta property="og:site_name" content="--async">
-<meta property="og:description" content="My installation log
-homebrew
-XCode 7.2
-gcc 7.1.0
-python 3.6.1
-anaconda 4.4.0
-Uninstalled spark, need to reinstall with python3
-Uninstalled tensorflow, need to reinstall with python3">
-<meta property="og:updated_time" content="2017-06-17T20:27:42.000Z">
+<meta property="og:description" content="Logistic RegressionTwitter text data preprocessing steps:
+Stem from nltk.stem import PorterStemmer
+Remove special symbols
+ 123456789# remove stock market tickers like $GE   tweet = re.sub(r&amp;apos;\$\w*">
+<meta property="og:updated_time" content="2020-07-07T03:03:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Installation log">
-<meta name="twitter:description" content="My installation log
-homebrew
-XCode 7.2
-gcc 7.1.0
-python 3.6.1
-anaconda 4.4.0
-Uninstalled spark, need to reinstall with python3
-Uninstalled tensorflow, need to reinstall with python3">
+<meta name="twitter:title" content="Notes for NLP Week1">
+<meta name="twitter:description" content="Logistic RegressionTwitter text data preprocessing steps:
+Stem from nltk.stem import PorterStemmer
+Remove special symbols
+ 123456789# remove stock market tickers like $GE   tweet = re.sub(r&amp;apos;\$\w*">
   
   
     <link rel="icon" href="/assets/image/favicon.png">
@@ -157,7 +145,7 @@ Uninstalled tensorflow, need to reinstall with python3">
 </nav>
 
       <div class="body-wrap">
-        <article id="post-Installation-log" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-nlp-wk1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -167,7 +155,7 @@ Uninstalled tensorflow, need to reinstall with python3">
         
   
     <h1 class="article-title" itemprop="name">
-      Installation log
+      Notes for NLP Week1
     </h1>
   
 
@@ -175,27 +163,35 @@ Uninstalled tensorflow, need to reinstall with python3">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="My-installation-log"><a href="#My-installation-log" class="headerlink" title="My installation log"></a>My installation log</h3><ul>
-<li>homebrew</li>
-<li>XCode 7.2</li>
-<li>gcc 7.1.0</li>
-<li>python 3.6.1</li>
-<li>anaconda 4.4.0</li>
-<li>Uninstalled spark, need to reinstall with python3</li>
-<li>Uninstalled tensorflow, need to reinstall with python3</li>
+        <h2 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h2><h3 id="Twitter-text-data-preprocessing-steps"><a href="#Twitter-text-data-preprocessing-steps" class="headerlink" title="Twitter text data preprocessing steps:"></a>Twitter text data preprocessing steps:</h3><ol>
+<li>Stem<br> <code>from nltk.stem import PorterStemmer</code></li>
+<li><p>Remove special symbols</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># remove stock market tickers like $GE</div><div class="line">   tweet = re.sub(r&apos;\$\w*&apos;, &apos;&apos;, tweet)</div><div class="line">   # remove old style retweet text &quot;RT&quot;</div><div class="line">   tweet = re.sub(r&apos;^RT[\s]+&apos;, &apos;&apos;, tweet)</div><div class="line">   # remove hyperlinks</div><div class="line">   tweet = re.sub(r&apos;https?:\/\/.*[\r\n]*&apos;, &apos;&apos;, tweet)</div><div class="line">   # remove hashtags</div><div class="line">   # only removing the hash # sign from the word</div><div class="line">   tweet = re.sub(r&apos;#&apos;, &apos;&apos;, tweet)</div></pre></td></tr></table></figure>
+</li>
+<li><p>Tokenize<br> <code>from nltk.tokenize import TweetTokenizer</code></p>
+</li>
+<li>Remove stop words<br> <code>from nltk.corpus import stopwords</code></li>
+</ol>
+<h3 id="Functions-I-learned"><a href="#Functions-I-learned" class="headerlink" title="Functions I learned"></a>Functions I learned</h3><ul>
+<li><code>np.dot()</code> for matrix mulplication</li>
+<li><code>np.exp()</code> for matrix exponential</li>
+<li><code>np.log()</code> for matrix logarithm</li>
+<li><code>dict.get(key, substitution_value)</code> instead of [] to avoid key error.</li>
+<li><code>np.asarray()</code> to convert a list to a numpy array, difference with <code>np.array()</code> is that <code>np.array()</code> does copy.</li>
+<li><code>np.squeeze()</code> to make an (m, 1) dimensional array [[],[],[]] into an (m,) array [,,,], when a list<br>is converted to an array using <code>np.asarray()</code>, it’s shaped as (m,).</li>
 </ul>
 
       
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2017/06/17/Installation-log/" class="archive-article-date">
-  	<time datetime="2017-06-17T20:24:47.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-06-17</time>
+      <a href="/2020/07/06/nlp-wk1/" class="archive-article-date">
+  	<time datetime="2020-07-07T02:43:07.000Z" itemprop="datePublished"><i class="icon-clock"></i>2020-07-06</time>
 </a>
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂/">杂</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
 	</div>
 
       
@@ -208,18 +204,9 @@ Uninstalled tensorflow, need to reinstall with python3">
   
 <nav id="article-nav">
   
-    <a href="/2017/07/03/六月——混沌/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          六月——混沌
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/06/17/Install-xgboost/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Install xgboost</div>
+    <a href="/2020/03/14/末日杂念/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">末日杂念</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -237,7 +224,7 @@ Uninstalled tensorflow, need to reinstall with python3">
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Installation-log" data-title="Installation log" data-url="https://tracycuican.github.io/2017/06/17/Installation-log/"></div>
+	<div class="ds-thread" data-thread-key="nlp-wk1" data-title="Notes for NLP Week1" data-url="https://tracycuican.github.io/2020/07/06/nlp-wk1/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

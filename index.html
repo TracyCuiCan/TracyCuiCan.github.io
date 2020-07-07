@@ -137,6 +137,72 @@
       <div class="body-wrap">
         
   
+    <article id="post-nlp-wk1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/06/nlp-wk1/">Notes for NLP Week1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h2><h3 id="Twitter-text-data-preprocessing-steps"><a href="#Twitter-text-data-preprocessing-steps" class="headerlink" title="Twitter text data preprocessing steps:"></a>Twitter text data preprocessing steps:</h3><ol>
+<li>Stem<br> <code>from nltk.stem import PorterStemmer</code></li>
+<li><p>Remove special symbols</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># remove stock market tickers like $GE</div><div class="line">   tweet = re.sub(r&apos;\$\w*&apos;, &apos;&apos;, tweet)</div><div class="line">   # remove old style retweet text &quot;RT&quot;</div><div class="line">   tweet = re.sub(r&apos;^RT[\s]+&apos;, &apos;&apos;, tweet)</div><div class="line">   # remove hyperlinks</div><div class="line">   tweet = re.sub(r&apos;https?:\/\/.*[\r\n]*&apos;, &apos;&apos;, tweet)</div><div class="line">   # remove hashtags</div><div class="line">   # only removing the hash # sign from the word</div><div class="line">   tweet = re.sub(r&apos;#&apos;, &apos;&apos;, tweet)</div></pre></td></tr></table></figure>
+</li>
+<li><p>Tokenize<br> <code>from nltk.tokenize import TweetTokenizer</code></p>
+</li>
+<li>Remove stop words<br> <code>from nltk.corpus import stopwords</code></li>
+</ol>
+<h3 id="Functions-I-learned"><a href="#Functions-I-learned" class="headerlink" title="Functions I learned"></a>Functions I learned</h3><ul>
+<li><code>np.dot()</code> for matrix mulplication</li>
+<li><code>np.exp()</code> for matrix exponential</li>
+<li><code>np.log()</code> for matrix logarithm</li>
+<li><code>dict.get(key, substitution_value)</code> instead of [] to avoid key error.</li>
+<li><code>np.asarray()</code> to convert a list to a numpy array, difference with <code>np.array()</code> is that <code>np.array()</code> does copy.</li>
+<li><code>np.squeeze()</code> to make an (m, 1) dimensional array [[],[],[]] into an (m,) array [,,,], when a list<br>is converted to an array using <code>np.asarray()</code>, it’s shaped as (m,).</li>
+</ul>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2020/07/06/nlp-wk1/" class="archive-article-date">
+  	<time datetime="2020-07-07T02:43:07.000Z" itemprop="datePublished"><i class="icon-clock"></i>2020-07-06</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-末日杂念" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -677,62 +743,6 @@
 
 
   
-    <article id="post-无题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/15/无题/">无题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>心神不宁了一天，目测又要失眠，来写一些乱七八糟的话。</p>
-<p>本来还打算写一篇日记，名字都想好了：“夏末的新开始”。因为一个艰难抉择，以及某一天fortune cookie告诉我的“Now is the time to try something new.” 于是在差不多经过了二十多个辗转反侧的夜晚之后，我下决心放下过去，重新做人。也确实在一头奔向新开始的路上走的平稳，然而今日一想，真的是新开始吗，还是我自己的想象？</p>
-<p>补看那期奇葩说，蔡康永说，人类是喜欢并擅于寻找各种理由让自己心安理得的动物。心里一惊，我告诉自己是他负我，告诉自己这失败根源于我们人生观的分歧，根源于人人都是自私的，甚至连失眠或许都是潜意识里控制的，为了让自己可怜一点，看啊，我已经没法承受这种痛苦了…会不会都是为了掩饰自己的举棋不定和见异思迁，掩饰其实是听从了内心深处暗暗传来的那声“放弃吧轻松一些”。是这样吗？据说凝视深渊的人，也正在被深渊凝视着。如果我内心是个深渊，人性是个深渊，凝视并没有给我这些问题的答案。</p>
-<p>觉得人生真是好苦哦，怎么我的情路这么坎坷。跟颖姐说“生活里70%都是痛苦”，她回说“人生苦短”。是咯，不仅苦还特么短，无论你怎么想，时间还是tic-toc-tic-toc，不会停。昨天看到萝贝贝推电影《二十二》的那篇文，其中有个奶奶说“这世界这么好，到现在我都没想死“，我这点痛苦简直可笑，觉得自己可笑。</p>
-<p>还觉得自己有病，总是很迅速的沉溺于一个人或一件事，但又不敢彻彻底底的陷进去，所以大概会在沉了五分钟，水没到腰但脚还悬空未触到底的时候，自己找好若干理由，有理有据地认识到这不是我应该沉下去的坑，于是又迅速抽身上来走掉。日后如若忆起，还没来得及遗憾就想起当日那个理由，然后又转过脸去。真有病。</p>
-<p>上帝大概在嘲笑我，平行空间里未来的我大概也在嘲笑我，只是我自己尚在迷雾中，以为自己见到了光，其实不过是内心的火。睡觉去吧，祝我安眠。</p>
-<p>08/16 12:24am</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2017/08/15/无题/" class="archive-article-date">
-  	<time datetime="2017-08-16T03:45:10.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-08-15</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂/">杂</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -796,7 +806,7 @@
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/all/" style="font-size: 20px;">all</a> <a href="/tags/技术/" style="font-size: 14px;">技术</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/杂/" style="font-size: 18px;">杂</a> <a href="/tags/电影/" style="font-size: 12px;">电影</a> <a href="/tags/读书/" style="font-size: 14px;">读书</a> <a href="/tags/随想/" style="font-size: 16px;">随想</a>
+    				<a href="/tags/all/" style="font-size: 20px;">all</a> <a href="/tags/技术/" style="font-size: 12.5px;">技术</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/杂/" style="font-size: 17.5px;">杂</a> <a href="/tags/电影/" style="font-size: 10px;">电影</a> <a href="/tags/读书/" style="font-size: 12.5px;">读书</a> <a href="/tags/随想/" style="font-size: 15px;">随想</a>
     			</div>
     	</section>
     
