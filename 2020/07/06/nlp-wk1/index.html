@@ -8,25 +8,16 @@
   <link rel="dns-prefetch" href="https://tracycuican.github.io">
   <title>Notes for NLP Week1 | --async</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Logistic RegressionTwitter text data preprocessing steps:
-Stem from nltk.stem import PorterStemmer
-Remove special symbols
- 123456789# remove stock market tickers like $GE   tweet = re.sub(r&amp;apos;\$\w*">
+  <meta name="description" content="Logistic RegressionTwitter text data preprocessing steps:1.Stem    from nltk.stem import PorterStemmer2.Remove special symbols    123456789# remove stock market tickers like $GE   tweet = re.sub(r&amp;apo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Notes for NLP Week1">
 <meta property="og:url" content="https://tracycuican.github.io/2020/07/06/nlp-wk1/index.html">
 <meta property="og:site_name" content="--async">
-<meta property="og:description" content="Logistic RegressionTwitter text data preprocessing steps:
-Stem from nltk.stem import PorterStemmer
-Remove special symbols
- 123456789# remove stock market tickers like $GE   tweet = re.sub(r&amp;apos;\$\w*">
-<meta property="og:updated_time" content="2020-07-07T03:03:07.000Z">
+<meta property="og:description" content="Logistic RegressionTwitter text data preprocessing steps:1.Stem    from nltk.stem import PorterStemmer2.Remove special symbols    123456789# remove stock market tickers like $GE   tweet = re.sub(r&amp;apo">
+<meta property="og:updated_time" content="2020-07-07T03:41:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Notes for NLP Week1">
-<meta name="twitter:description" content="Logistic RegressionTwitter text data preprocessing steps:
-Stem from nltk.stem import PorterStemmer
-Remove special symbols
- 123456789# remove stock market tickers like $GE   tweet = re.sub(r&amp;apos;\$\w*">
+<meta name="twitter:description" content="Logistic RegressionTwitter text data preprocessing steps:1.Stem    from nltk.stem import PorterStemmer2.Remove special symbols    123456789# remove stock market tickers like $GE   tweet = re.sub(r&amp;apo">
   
   
     <link rel="icon" href="/assets/image/favicon.png">
@@ -163,23 +154,12 @@ Remove special symbols
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h2><h3 id="Twitter-text-data-preprocessing-steps"><a href="#Twitter-text-data-preprocessing-steps" class="headerlink" title="Twitter text data preprocessing steps:"></a>Twitter text data preprocessing steps:</h3><ol>
-<li>Stem<br> <code>from nltk.stem import PorterStemmer</code></li>
-<li><p>Remove special symbols</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># remove stock market tickers like $GE</div><div class="line">   tweet = re.sub(r&apos;\$\w*&apos;, &apos;&apos;, tweet)</div><div class="line">   # remove old style retweet text &quot;RT&quot;</div><div class="line">   tweet = re.sub(r&apos;^RT[\s]+&apos;, &apos;&apos;, tweet)</div><div class="line">   # remove hyperlinks</div><div class="line">   tweet = re.sub(r&apos;https?:\/\/.*[\r\n]*&apos;, &apos;&apos;, tweet)</div><div class="line">   # remove hashtags</div><div class="line">   # only removing the hash # sign from the word</div><div class="line">   tweet = re.sub(r&apos;#&apos;, &apos;&apos;, tweet)</div></pre></td></tr></table></figure>
-</li>
-<li><p>Tokenize<br> <code>from nltk.tokenize import TweetTokenizer</code></p>
-</li>
-<li>Remove stop words<br> <code>from nltk.corpus import stopwords</code></li>
-</ol>
-<h3 id="Functions-I-learned"><a href="#Functions-I-learned" class="headerlink" title="Functions I learned"></a>Functions I learned</h3><ul>
-<li><code>np.dot()</code> for matrix mulplication</li>
-<li><code>np.exp()</code> for matrix exponential</li>
-<li><code>np.log()</code> for matrix logarithm</li>
-<li><code>dict.get(key, substitution_value)</code> instead of [] to avoid key error.</li>
-<li><code>np.asarray()</code> to convert a list to a numpy array, difference with <code>np.array()</code> is that <code>np.array()</code> does copy.</li>
-<li><code>np.squeeze()</code> to make an (m, 1) dimensional array [[],[],[]] into an (m,) array [,,,], when a list<br>is converted to an array using <code>np.asarray()</code>, it’s shaped as (m,).</li>
-</ul>
+        <h2 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h2><h3 id="Twitter-text-data-preprocessing-steps"><a href="#Twitter-text-data-preprocessing-steps" class="headerlink" title="Twitter text data preprocessing steps:"></a>Twitter text data preprocessing steps:</h3><p>1.Stem<br>    <code>from nltk.stem import PorterStemmer</code><br>2.Remove special symbols<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># remove stock market tickers like $GE</div><div class="line">   tweet = re.sub(r&apos;\$\w*&apos;, &apos;&apos;, tweet)</div><div class="line">   # remove old style retweet text &quot;RT&quot;</div><div class="line">   tweet = re.sub(r&apos;^RT[\s]+&apos;, &apos;&apos;, tweet)</div><div class="line">   # remove hyperlinks</div><div class="line">   tweet = re.sub(r&apos;https?:\/\/.*[\r\n]*&apos;, &apos;&apos;, tweet)</div><div class="line">   # remove hashtags</div><div class="line">   # only removing the hash # sign from the word</div><div class="line">   tweet = re.sub(r&apos;#&apos;, &apos;&apos;, tweet)</div></pre></td></tr></table></figure></p>
+<p>3.Tokenize<br>    <code>from nltk.tokenize import TweetTokenizer</code><br>4.Remove stop words<br>    <code>from nltk.corpus import stopwords</code></p>
+<h3 id="Functions-I-learned"><a href="#Functions-I-learned" class="headerlink" title="Functions I learned"></a>Functions I learned</h3><p><em><code>np.dot()</code> for matrix mulplication
+</em><code>np.exp()</code> for matrix exponential<br><em><code>np.log()</code> for matrix logarithm
+</em><code>dict.get(key, substitution_value)</code> instead of [] to avoid key error.<br><em><code>np.asarray()</code> to convert a list to a numpy array, difference with <code>np.array()</code> is that <code>np.array()</code> does copy.
+</em><code>np.squeeze()</code> to make an (m, 1) dimensional array [[],[],[]] into an (m,) array [,,,], when a list<br>is converted to an array using <code>np.asarray()</code>, it’s shaped as (m,).</p>
 
       
     </div>
