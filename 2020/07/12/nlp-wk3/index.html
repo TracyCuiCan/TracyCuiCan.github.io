@@ -6,21 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://tracycuican.github.io">
-  <title>机器学习－周志华－第五章习题 | --async</title>
+  <title>nlp_wk3 | --async</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="5.1 试述将线型函数\(y = \omega^Tx\)用作神经元激活函数的缺陷.线型激活函数就等同于线性回归， 当样本不能线型可分的时候，不能很好的对样本分类。
-5.2 试述使用图5.2(b)激活函数的神经元与对率回归的联系。图5.2(b)是sigmoid函数，当使用sigmoid函数作为激活函数时\(y = \frac{1}{1 + e^{-(\omega^Tx + b)}}\)；用Logis">
+  <meta name="description" content="Naive Bayes &amp;amp; Word EmbeddingNaive Bayes
+Bayes rule
+Log likelihood
+Laplacian smoothing
+For sentiment analysis, calculate prior as the the number of positive and negative documents,calculate conditi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="机器学习－周志华－第五章习题">
-<meta property="og:url" content="https://tracycuican.github.io/2016/12/06/机器学习第五章/index.html">
+<meta property="og:title" content="nlp_wk3">
+<meta property="og:url" content="https://tracycuican.github.io/2020/07/12/nlp-wk3/index.html">
 <meta property="og:site_name" content="--async">
-<meta property="og:description" content="5.1 试述将线型函数\(y = \omega^Tx\)用作神经元激活函数的缺陷.线型激活函数就等同于线性回归， 当样本不能线型可分的时候，不能很好的对样本分类。
-5.2 试述使用图5.2(b)激活函数的神经元与对率回归的联系。图5.2(b)是sigmoid函数，当使用sigmoid函数作为激活函数时\(y = \frac{1}{1 + e^{-(\omega^Tx + b)}}\)；用Logis">
-<meta property="og:updated_time" content="2016-12-19T00:20:37.000Z">
+<meta property="og:description" content="Naive Bayes &amp;amp; Word EmbeddingNaive Bayes
+Bayes rule
+Log likelihood
+Laplacian smoothing
+For sentiment analysis, calculate prior as the the number of positive and negative documents,calculate conditi">
+<meta property="og:updated_time" content="2020-07-13T03:34:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机器学习－周志华－第五章习题">
-<meta name="twitter:description" content="5.1 试述将线型函数\(y = \omega^Tx\)用作神经元激活函数的缺陷.线型激活函数就等同于线性回归， 当样本不能线型可分的时候，不能很好的对样本分类。
-5.2 试述使用图5.2(b)激活函数的神经元与对率回归的联系。图5.2(b)是sigmoid函数，当使用sigmoid函数作为激活函数时\(y = \frac{1}{1 + e^{-(\omega^Tx + b)}}\)；用Logis">
+<meta name="twitter:title" content="nlp_wk3">
+<meta name="twitter:description" content="Naive Bayes &amp;amp; Word EmbeddingNaive Bayes
+Bayes rule
+Log likelihood
+Laplacian smoothing
+For sentiment analysis, calculate prior as the the number of positive and negative documents,calculate conditi">
   
   
     <link rel="icon" href="/assets/image/favicon.png">
@@ -139,7 +148,7 @@
 </nav>
 
       <div class="body-wrap">
-        <article id="post-机器学习第五章" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-nlp-wk3" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -149,7 +158,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      机器学习－周志华－第五章习题
+      nlp_wk3
     </h1>
   
 
@@ -157,23 +166,44 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script><br>5.1 试述将线型函数\(y = \omega^Tx\)用作神经元激活函数的缺陷.<br>线型激活函数就等同于线性回归， 当样本不能线型可分的时候，不能很好的对样本分类。</p>
-<p>5.2 试述使用图5.2(b)激活函数的神经元与对率回归的联系。<br>图5.2(b)是sigmoid函数，当使用sigmoid函数作为激活函数时\(y = \frac{1}{1 + e^{-(\omega^Tx + b)}}\)；用Logistic regression做分类的时候\(y = \frac{1}{1 + e^{-(\omega^Tx + b)}}\)；所以使用sigmoid函数作为激活函数的神经元，是在解决一个对率回归问题。</p>
-<p>5.3 对于图5.7中的\(\upsilon\)试推导出BP算法中的更新公式5.13.<br>$$\Delta \upsilon_{ih} = - \eta \frac{\partial E_k}{\partial \upsilon_i}$$<br>$$ = \frac{\partial E_k}{\partial b_h} \frac{\partial b_h}{\partial \alpha_h} \frac{\partial \alpha_h}{\partial \upsilon_i}$$<br>其中$$e_h = - \frac{\partial E_k}{\partial b_h} \frac{\partial b_h}{\partial \alpha_h}$$<br>$$\frac{\partial \alpha_h}{\partial \upsilon_i} = x_i$$<br>所以\(\Delta \upsilon_i = \eta e_h x_i\).</p>
-<p>5.4 试述式(5.6)中学习率的取值对神经网络的影响。<br>学习率设置太小，则收敛得慢，迭代次数多；学习率设置太大则容易振荡，来回波动却找不到最优值。</p>
-<p>To be continued…<br>5.5 试编程实现标准BP算法和累积BP算法，在西瓜数据集3.0上分别用这两个算法训练一个单隐层网络，并进行比较。</p>
-<p>5.6 试设计一个BP改进算法，能通过动态调整学习率显著提高收敛速度。编程实现该算法，并选择两个UCI数据集与标准BP算法比较。</p>
-<p>5.7 根据式5.18和5.19，试构造一个能解决异或问题的单层RBF神经网络。</p>
-<p>5.8 从网上下载或自己编程实现一个SOM网络，并观察在西瓜数据集3.0a上产生的结果。</p>
-<p>5.9 试推导用于Elman网络的BP算法。</p>
-<p>5.10 实现一个卷积神经网络。</p>
+        <h2 id="Naive-Bayes-amp-Word-Embedding"><a href="#Naive-Bayes-amp-Word-Embedding" class="headerlink" title="Naive Bayes &amp; Word Embedding"></a>Naive Bayes &amp; Word Embedding</h2><h3 id="Naive-Bayes"><a href="#Naive-Bayes" class="headerlink" title="Naive Bayes"></a>Naive Bayes</h3><ul>
+<li>Bayes rule</li>
+<li>Log likelihood</li>
+<li>Laplacian smoothing</li>
+<li>For sentiment analysis, calculate prior as the the number of positive and negative documents,<br>calculate conditional probablity as the frequency of the word in positive and negative documents.</li>
+</ul>
+<h4 id="Application-of-Naive-Bayes"><a href="#Application-of-Naive-Bayes" class="headerlink" title="Application of Naive Bayes"></a>Application of Naive Bayes</h4><ul>
+<li>Sentiment analysis</li>
+<li>Author identification</li>
+<li>Information retrieval</li>
+<li>Word disambiguation</li>
+</ul>
+<h3 id="Naive-Bayes-Assumptions"><a href="#Naive-Bayes-Assumptions" class="headerlink" title="Naive Bayes Assumptions"></a>Naive Bayes Assumptions</h3><ul>
+<li>Independence: Not true in NLP</li>
+<li>Relative frequency of classes affect the model, data is often imbalanced.</li>
+</ul>
+<h3 id="Word-Embedding"><a href="#Word-Embedding" class="headerlink" title="Word Embedding"></a>Word Embedding</h3><h4 id="Linear-algebra-operations-in-Numpy"><a href="#Linear-algebra-operations-in-Numpy" class="headerlink" title="Linear algebra operations in Numpy"></a>Linear algebra operations in Numpy</h4><p>Difference between lists and numpy arrays:</p>
+<p>The <code>+</code> operator on NumPy arrays perform an element-wise addition, while the same operation on Python lists results in a list concatenation, same with the <code>*</code> operator<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">alist = [1, 2, 3, 4, 5]</div><div class="line">narray = np.array([1, 2, 3, 4])</div><div class="line"></div><div class="line">print(narray + narray)</div><div class="line">print(alist + alist)</div><div class="line">[2 4 6 8]</div><div class="line">[1, 2, 3, 4, 5, 1, 2, 3, 4, 5]</div><div class="line"></div><div class="line">print(narray * 3)</div><div class="line">print(alist * 3)</div><div class="line">[ 3  6  9 12]</div><div class="line">[1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5]</div></pre></td></tr></table></figure></p>
+<p>The product operator <code>*</code> when used on arrays or matrices indicates element-wise multiplications. Do not confuse it with the dot product.</p>
+<p>Find norm of a nparray or matrix: <code>np.linalg.norm(X)</code></p>
+<p><strong>axis=0</strong> in params performs column wise operations while <strong>axis=1</strong> in params performs row wise operation.</p>
+<h4 id="Vector-space"><a href="#Vector-space" class="headerlink" title="Vector space"></a>Vector space</h4><p>Similarity between two vectors can be calculated by Euclidean distance or cosine similarity, cosine similarity is prefered.</p>
+<ul>
+<li>Euclidean distance: <code>np.linalg.norm(A, B)</code></li>
+<li>Cosine similarity: <code>np.dot(A, B) / np.linalg.norm(A) / np.linalg.norm(B)</code></li>
+</ul>
+<p>PCA for dimension reduction.</p>
+<p><code>np.cov(m, rowvar=True)</code> to calculate the covariance matrix, <code>rowvar</code> is True by default, then each column is a sample and each row is a feature. </p>
+<p><code>np.linalg.eigh(a)</code> to calculate eigen value and eigen vector. If <code>a</code> is symmetric, using <code>np.linalg.eigh()</code> is much more performant than <code>np.linalg.eig()</code>.</p>
+<p><code>np.argsort()</code> sorts the values in an array from smallest to largest, then returns the indices from this sort. To apply the sorted index row wise, do <code>X[indices_sorted]</code>, to apply the sorted index column wise, do <code>X[:, indices_sorted]</code>.</p>
+<p><code>X[::-1]</code> to reverse the order of a list.</p>
 
       
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2016/12/06/机器学习第五章/" class="archive-article-date">
-  	<time datetime="2016-12-07T04:34:57.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-06</time>
+      <a href="/2020/07/12/nlp-wk3/" class="archive-article-date">
+  	<time datetime="2020-07-13T02:53:53.000Z" itemprop="datePublished"><i class="icon-clock"></i>2020-07-12</time>
 </a>
       
 	<div class="article-tag tagcloud">
@@ -191,18 +221,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2016/12/07/用Markdown写公式/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          用Markdown写公式
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/12/04/我们夜里在美术馆谈恋爱/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">读书｜理想主义者的出路</div>
+    <a href="/2020/07/06/nlp-wk1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Notes for NLP Week1</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -220,7 +241,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="机器学习第五章" data-title="机器学习－周志华－第五章习题" data-url="https://tracycuican.github.io/2016/12/06/机器学习第五章/"></div>
+	<div class="ds-thread" data-thread-key="nlp-wk3" data-title="nlp_wk3" data-url="https://tracycuican.github.io/2020/07/12/nlp-wk3/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
