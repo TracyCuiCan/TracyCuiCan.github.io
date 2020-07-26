@@ -137,6 +137,59 @@
       <div class="body-wrap">
         
   
+    <article id="post-nlp-wk4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/25/nlp-wk4/">Notes for NLP Course1 Week4</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Machine-Translation-and-Document-Search"><a href="#Machine-Translation-and-Document-Search" class="headerlink" title="Machine Translation and Document Search"></a>Machine Translation and Document Search</h2><p>Frobenius Norm of matrix <code>A</code> = <code>np.squrt(np.sum(np.square(A)))</code></p>
+<p>To translate English to French by using embedding, we need to approximate the transformation matrix <code>R</code> that transforms the English embedding matrix <code>X</code> to the French embedding matrix <code>Y</code>. We can use gradient descent to find matrix <code>R</code> where argmin_R ||XR - Y||_F. After finding R, during inference process, we need to find K nearest neighbors of Y_hat in French vocabulary. When there are so many candidate neighbors (the whole vocabulary), KNN is very expensive. And Locality sensitive hashing comes into play.</p>
+<p>Locality sensitive hashing defines multiple (N) planes that divide the space into 2^N hash buckets. Planes are represented by a vector that marks the direction in which you find the positive side of the plane. Given a embedding, if the sign of it’s product with the plane vector is positive, it’s on one side of the plane, this way we can hash the embeddings into buckets. The hash value of an input vector <code>hash_value = 2^i * h_i</code> where <code>h_i = 1</code> for positive sign <code>h_i = 0</code> for negative sign for the ith plane. </p>
+<p><code>np.where(condition, x, y)</code> returns elements chosen from x or y depending on condition. e.g. <code>A = np.where(B &gt;= 0, 1, 0)</code> where <code>A</code> <code>B</code> are both matrixs, and A[i, j] equals to 0 or 1 depending on the value of B[i, j].</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2020/07/25/nlp-wk4/" class="archive-article-date">
+  	<time datetime="2020-07-26T01:32:08.000Z" itemprop="datePublished"><i class="icon-clock"></i>2020-07-25</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-nlp-wk3" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -147,7 +200,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/12/nlp-wk3/">nlp_wk3</a>
+      <a class="article-title" href="/2020/07/12/nlp-wk3/">Notes for NLP Course1 Week2 &amp; 3</a>
     </h1>
   
 
@@ -227,7 +280,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/06/nlp-wk1/">Notes for NLP Week1</a>
+      <a class="article-title" href="/2020/07/06/nlp-wk1/">Notes for NLP Course1 Week1</a>
     </h1>
   
 
@@ -703,58 +756,6 @@
 
 
   
-    <article id="post-长恨歌究竟在恨什么" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/02/长恨歌究竟在恨什么/">长恨歌究竟在恨什么</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>之前读《长恨歌》我就有疑问，被赐死的杨玉环为什么还会梨花一枝春带雨，含情凝睇谢君王；而为了背叛了杨玉环的唐明皇又怎么还有脸行宫见月伤心色，夜雨闻铃肠断声；白居易为什么要写这么一个一点也不完美的爱情故事？</p>
-<p>今天看了《妖猫传》，我想玄宗大概没有电影里那么虚伪，但是享受惯了凌驾于万人之上的极乐之乐的君王为了保全权利放弃爱情也完全可以理解，杨玉环大概也不像电影里面那样高贵优雅，看透一切选择包容，盛世时她受得了三千宠爱，衰颓时也要受得了被推出去做棋子。含恨或是无奈，可能这也是他们各自绵绵无绝期的恨，一恨时势不造就，面子里子不能两全，一恨命运不平凡，爱和恨不能由己。</p>
-<p>白居易或许为了艺术创作选择不去深究，或许只是借此二人的故事写出自己理想的爱情悲剧，就好比李白没看到贵妃就写出那句“云想衣裳花想容”一样。至于爱情的真假，你爱一个人是否有一部分是享受爱ta时的你自己呢？</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2018/03/02/长恨歌究竟在恨什么/" class="archive-article-date">
-  	<time datetime="2018-03-03T04:12:31.000Z" itemprop="datePublished"><i class="icon-clock"></i>2018-03-02</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/电影/">电影</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -818,7 +819,7 @@
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/all/" style="font-size: 20px;">all</a> <a href="/tags/技术/" style="font-size: 14px;">技术</a> <a href="/tags/机器学习/" style="font-size: 12px;">机器学习</a> <a href="/tags/杂/" style="font-size: 18px;">杂</a> <a href="/tags/电影/" style="font-size: 10px;">电影</a> <a href="/tags/读书/" style="font-size: 14px;">读书</a> <a href="/tags/随想/" style="font-size: 16px;">随想</a>
+    				<a href="/tags/all/" style="font-size: 20px;">all</a> <a href="/tags/技术/" style="font-size: 12.5px;">技术</a> <a href="/tags/机器学习/" style="font-size: 12.5px;">机器学习</a> <a href="/tags/杂/" style="font-size: 17.5px;">杂</a> <a href="/tags/电影/" style="font-size: 10px;">电影</a> <a href="/tags/读书/" style="font-size: 12.5px;">读书</a> <a href="/tags/随想/" style="font-size: 15px;">随想</a>
     			</div>
     	</section>
     
