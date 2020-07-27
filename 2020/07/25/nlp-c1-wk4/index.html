@@ -6,17 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://tracycuican.github.io">
-  <title>Tag: 随想 | --async</title>
+  <title>Notes for NLP Course1 Week4 | --async</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="很高兴认识你。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="--async">
-<meta property="og:url" content="https://tracycuican.github.io/tags/随想/index.html">
+  <meta name="description" content="Machine Translation and Document SearchFrobenius Norm of matrix A = np.squrt(np.sum(np.square(A)))
+To translate English to French by using embedding, we need to approximate the transformation matrix R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Notes for NLP Course1 Week4">
+<meta property="og:url" content="https://tracycuican.github.io/2020/07/25/nlp-c1-wk4/index.html">
 <meta property="og:site_name" content="--async">
-<meta property="og:description" content="很高兴认识你。">
+<meta property="og:description" content="Machine Translation and Document SearchFrobenius Norm of matrix A = np.squrt(np.sum(np.square(A)))
+To translate English to French by using embedding, we need to approximate the transformation matrix R">
+<meta property="og:updated_time" content="2020-07-26T15:37:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="--async">
-<meta name="twitter:description" content="很高兴认识你。">
+<meta name="twitter:title" content="Notes for NLP Course1 Week4">
+<meta name="twitter:description" content="Machine Translation and Document SearchFrobenius Norm of matrix A = np.squrt(np.sum(np.square(A)))
+To translate English to French by using embedding, we need to approximate the transformation matrix R">
   
   
     <link rel="icon" href="/assets/image/favicon.png">
@@ -135,234 +139,100 @@
 </nav>
 
       <div class="body-wrap">
+        <article id="post-nlp-c1-wk4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
         
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/31/一八一九/" class="archive-article-date">
-  	<time datetime="2019-01-01T04:22:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2018-12-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/31/一八一九/">一八一九</a>
+    <h1 class="article-title" itemprop="name">
+      Notes for NLP Course1 Week4
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随想/">随想</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/30/风筝的故事/" class="archive-article-date">
-  	<time datetime="2018-09-30T15:26:08.000Z" itemprop="datePublished"><i class="icon-clock"></i>2018-09-30</time>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Machine-Translation-and-Document-Search"><a href="#Machine-Translation-and-Document-Search" class="headerlink" title="Machine Translation and Document Search"></a>Machine Translation and Document Search</h2><p>Frobenius Norm of matrix <code>A</code> = <code>np.squrt(np.sum(np.square(A)))</code></p>
+<p>To translate English to French by using embedding, we need to approximate the transformation matrix <code>R</code> that transforms the English embedding matrix <code>X</code> to the French embedding matrix <code>Y</code>. We can use gradient descent to find matrix <code>R</code> where argmin_R ||XR - Y||_F. After finding R, during inference process, we need to find K nearest neighbors of Y_hat in French vocabulary. When there are so many candidate neighbors (the whole vocabulary), KNN is very expensive. And Locality sensitive hashing comes into play.</p>
+<p>Locality sensitive hashing defines multiple (N) planes that divide the space into 2^N hash buckets. Planes are represented by a vector that marks the direction in which you find the positive side of the plane. Given a embedding, if the sign of it’s product with the plane vector is positive, it’s on one side of the plane, this way we can hash the embeddings into buckets. The hash value of an input vector <code>hash_value = 2^i * h_i</code> where <code>h_i = 1</code> for positive sign <code>h_i = 0</code> for negative sign for the ith plane. </p>
+<p><code>np.where(condition, x, y)</code> returns elements chosen from x or y depending on condition. e.g. <code>A = np.where(B &gt;= 0, 1, 0)</code> where <code>A</code> <code>B</code> are both matrixs, and A[i, j] equals to 0 or 1 depending on the value of B[i, j].</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2020/07/25/nlp-c1-wk4/" class="archive-article-date">
+  	<time datetime="2020-07-26T01:32:08.000Z" itemprop="datePublished"><i class="icon-clock"></i>2020-07-25</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/30/风筝的故事/">风筝的故事</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随想/">随想</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/31/一七一八/" class="archive-article-date">
-  	<time datetime="2018-01-01T03:20:46.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-12-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/31/一七一八/">一七一八</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随想/">随想</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/12/故国神游，多情应笑我/" class="archive-article-date">
-  	<time datetime="2017-04-13T02:57:35.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-04-12</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/12/故国神游，多情应笑我/">故国神游，多情应笑我</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随想/">随想</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/31/一六一七/" class="archive-article-date">
-  	<time datetime="2017-01-01T04:54:50.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/31/一六一七/">一六一七</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随想/">随想</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/18/听/" class="archive-article-date">
-  	<time datetime="2016-12-19T00:20:57.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/18/听/">听</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随想/">随想</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <a href="/2020/07/26/nlp-c2-wk1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          nlp-c2-wk1
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2020/07/12/nlp-c1-wk3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Notes for NLP Course1 Week2 &amp; 3</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
+</nav>
 
-    
+
+
+
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="nlp-c1-wk4" data-title="Notes for NLP Course1 Week4" data-url="https://tracycuican.github.io/2020/07/25/nlp-c1-wk4/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"tracycuican"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 
       </div>
@@ -385,9 +255,9 @@
 		mathjax: false,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

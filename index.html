@@ -137,7 +137,7 @@
       <div class="body-wrap">
         
   
-    <article id="post-nlp-wk4" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-nlp-c2-wk1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -147,7 +147,61 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/25/nlp-wk4/">Notes for NLP Course1 Week4</a>
+      <a class="article-title" href="/2020/07/26/nlp-c2-wk1/">nlp-c2-wk1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Autocorrect-and-Minimum-Edit-Distance"><a href="#Autocorrect-and-Minimum-Edit-Distance" class="headerlink" title="Autocorrect and Minimum Edit Distance"></a>Autocorrect and Minimum Edit Distance</h2><h3 id="How-does-it-work"><a href="#How-does-it-work" class="headerlink" title="How does it work"></a>How does it work</h3><p>For a given word, find all the “words” that are one/two edit distance away from it; filter out those not in the vocabulary; order by the probability of each word by it’s prior probability of appearing in the context; choose the one with the highest probability. </p>
+<h3 id="Python-Utils"><a href="#Python-Utils" class="headerlink" title="Python Utils"></a>Python Utils</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">from collection import Counter</div><div class="line">dict = Counter(word)  # gives a dictionary of &#123;a : count_a&#125; ordered by count_a.</div><div class="line"></div><div class="line">text.lower()  # converts all letters in text to lower case.</div><div class="line"></div><div class="line">words = re.findall(r&apos;\w+&apos;, text)  # tokenize the string to words and return them in a list.</div><div class="line"></div><div class="line">set(words)  # converts list into a set</div><div class="line"></div><div class="line">set().intersection()  # finds intersection of two sets.</div><div class="line">set1 &amp; set2  # also finds intersection of two sets.</div><div class="line"></div><div class="line"># File operations.</div><div class="line">with open(file_name, &apos;r&apos;) as f:</div><div class="line">	data = f.read()</div><div class="line">f.close()</div><div class="line"></div><div class="line">dict.items()  # Returns tuples in the dictionary, can be accessed by item[0], item[1].</div><div class="line"></div><div class="line"># Find the keys that have the highest values in a dictionary</div><div class="line"># Counter(dict) creates a Counter object from a regular dictionary</div><div class="line"># Counter.most_common(n) gets the n most common keys.</div><div class="line">Counter(dict).most_common(n)</div></pre></td></tr></table></figure>
+<h3 id="List-comprehension"><a href="#List-comprehension" class="headerlink" title="List comprehension"></a>List comprehension</h3><p>Syntax: <code>[expression for item in list if condition]</code> input can be for string or tuple or list, output is a list. Examples:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">splits = [(word[:i], word[i:]) for i in range(len(word))]</div><div class="line">result = [L + R for L, R in splits if len(R) &gt; 1]</div><div class="line"></div><div class="line">[f(a, b, c) for a, b in splits if condition for c in string]</div><div class="line"></div><div class="line">&#123;word : probs.get(word, 0) for word in words&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="Short-circuit"><a href="#Short-circuit" class="headerlink" title="Short circuit"></a>Short circuit</h3><p>Logical operations such as <code>and</code> and <code>or</code> have two useful perperties, they can operate on lists and have short-circuit behavior. Examples:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">print([] and [&apos;a&apos;, &apos;b&apos;])  # []</div><div class="line">print([] or [&apos;a&apos;, &apos;b&apos;])  # [&apos;a&apos;, &apos;b&apos;]</div><div class="line"></div><div class="line">val = [&apos;most likely&apos;] or [&apos;less so&apos;] or [&apos;least of all&apos;]  # selects first, does not evaluate remainder.</div><div class="line"></div><div class="line">val = [] or [] or [&apos;least of all&apos;]  # continues evaluation until there is a non-empty list.</div></pre></td></tr></table></figure></p>
+<h3 id="Pitfalls"><a href="#Pitfalls" class="headerlink" title="Pitfalls"></a>Pitfalls</h3><p><code>set(str)</code> does not return a set with <code>str</code> as an element, for example <code>set(&#39;str&#39;) = {&#39;s&#39;, &#39;t&#39;, &#39;r&#39;}</code>.</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2020/07/26/nlp-c2-wk1/" class="archive-article-date">
+  	<time datetime="2020-07-26T15:38:38.000Z" itemprop="datePublished"><i class="icon-clock"></i>2020-07-26</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-nlp-c1-wk4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/25/nlp-c1-wk4/">Notes for NLP Course1 Week4</a>
     </h1>
   
 
@@ -164,7 +218,7 @@
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2020/07/25/nlp-wk4/" class="archive-article-date">
+      <a href="/2020/07/25/nlp-c1-wk4/" class="archive-article-date">
   	<time datetime="2020-07-26T01:32:08.000Z" itemprop="datePublished"><i class="icon-clock"></i>2020-07-25</time>
 </a>
       
@@ -190,7 +244,7 @@
 
 
   
-    <article id="post-nlp-wk3" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-nlp-c1-wk3" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -200,7 +254,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/12/nlp-wk3/">Notes for NLP Course1 Week2 &amp; 3</a>
+      <a class="article-title" href="/2020/07/12/nlp-c1-wk3/">Notes for NLP Course1 Week2 &amp; 3</a>
     </h1>
   
 
@@ -244,7 +298,7 @@
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2020/07/12/nlp-wk3/" class="archive-article-date">
+      <a href="/2020/07/12/nlp-c1-wk3/" class="archive-article-date">
   	<time datetime="2020-07-13T02:53:53.000Z" itemprop="datePublished"><i class="icon-clock"></i>2020-07-12</time>
 </a>
       
@@ -270,7 +324,7 @@
 
 
   
-    <article id="post-nlp-wk1" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-nlp-c1-wk1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -280,7 +334,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/06/nlp-wk1/">Notes for NLP Course1 Week1</a>
+      <a class="article-title" href="/2020/07/06/nlp-c1-wk1/">Notes for NLP Course1 Week1</a>
     </h1>
   
 
@@ -299,7 +353,7 @@
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2020/07/06/nlp-wk1/" class="archive-article-date">
+      <a href="/2020/07/06/nlp-c1-wk1/" class="archive-article-date">
   	<time datetime="2020-07-07T02:43:07.000Z" itemprop="datePublished"><i class="icon-clock"></i>2020-07-06</time>
 </a>
       
@@ -698,64 +752,6 @@
 
 
   
-    <article id="post-啊朋友再见" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/27/啊朋友再见/">啊朋友再见</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天是在BB的最后一天，关于这次离职，我其实想象了很久又计划了很久。从最开始的“哥终于造反成功了，哥终于要摔桌子走人了，什么UI,什么application,拜拜了您呐！”；到“还是低调一些，轻轻的挥一挥衣袖，不带走一片云彩。”；到“同事们都好可爱，舍不得走，新的环境不晓得能不能适应，不走了吧要不？”；到“我要怎么跟老板开口，说了辞职之后剩下的两周得多尴尬“；到“对不起老板，对不起同事，对不起我的实习生，对不起我们新招的组员”；到”走之前要不要请同事们喝顿酒，我离职邮件要怎么写，要发给谁？“</p>
-<p>然而过程一切都很顺利，顺利的我都没有察觉，就到了最后一天。担心的事情都自然而然的解决，计划了再多也是仓促离别。想好了要在周五下午组会之后跟Alex摊牌，谁曾想他早上找我讨论工作，一个项目临时要加进来，他介绍完项目之后，我说我尽量做，但我可能没办法完成了，因为我要离职了。话确实是很难说出口，硬着头皮说了也就说了，Alex有点懵，他第一句话说”oh, we’ll miss you very much!”，然后说其实我们公司有很多机会的我去问问Ryan。两个小时之后Ryan就来找我聊天了，很诚恳的给我一些留下来的选择，我表示感谢并婉拒了。然后一切恢复平常，sprint的活没做完还是要做，期间跟Alex开了两次会交接了一下工作，组里的同事们暂时还不知道。过了一周在组会上跟同事们交代了，又过了一周到了今天。</p>
-<p>其实要交接的事情也没有我想象中的那么多，其实话说出去之后愧疚感就没有那么强烈了，其实我没有那么重要一切都可以figure out，其实比起舍不得大家对我更多的是祝福，其实还有很多话没说有很多事没做，其实不尴尬其实很开心。今天一早去了，回复了两封邮件，组长不在一些asset我是secondary backup，所以到了我这里来。然后帮实习生Tomer看了一个bug，他想在我走之前把项目做完，所以有点着急，但写代码这种事情越急越出错。然后坐下来写邮件，参考了自己以前收到的几封farewell，想要写的不那么模版，又怕自己加了太多persona touch不专业，期间新来的组员还过来问了我几个问题。手忙脚乱写好了邮件，Bcc了能想起来的所有人，点击发送。</p>
-<p>然后收到大家的回复，收到一些IB, 然后我跟Charlotte一起去了Farzaneh家里看望little Arman。带着母亲光环的Farz很亲切，为她感到由衷的开心！我们聊了一些baby stuff，聊了一些同事和工作的近况，还聊了一些我的新去处。Farz和Charlotte说让我去到Google看到中意的对象要告诉她们，她们帮我把关 :P 突然感觉自己在纽约也并非孑然一身，如果我想要建立联系，她们不是说了再见就再也见不到的人。她们在这里settle down,有了家庭有了宝宝，她们在我心里给这座城市的地基拴了几条绳，绝望的时候可以顺着绳子爬一爬。</p>
-<p>回去公司Matt，Derek, Anand来跟我告别，觉得自己真的挺幸运，第一份工作遇到这些领导和同事。给了我很多帮助和指导。我一直是一个很reserve的人，但三年积累下来，情谊也算不上薄。然后我就匆匆忙忙跟Kyuwon，Zhichao, Wenqian, Charlotte拥抱告别。Kyuwon虽然上周就知道我要离职，但今天还是有点紧张，看到我在收拾东西，赶紧起身跟我告别。他大概是个更reserve的人吧。</p>
-<p>告别实在是仓促，应该多拍点照片留作纪念的，应该跟pengyi，冬雪她们约个饭的，应该跟组里同事喝个酒的，应该跟每个人说说话表达一下感谢的，应该记一下大家的联系方式的，应该把大家给我回复的邮件截屏保存下来的，应该仔细看看电脑桌面上的东西看看有没有遗漏的…可是我一个人在下午三点四十几分被HR姐姐送出了Bloomberg tower，站在楼下脑子里一团乱，怅然若失，很久才缓过神来。</p>
-<p>从前我告别总是很仔细，高中毕业离校之前拿着相机把学校里每一个角落走遍拍遍，连门牌号都不落；本科毕业也是留到最后一拨差不多送完了同学们才走；研究生毕业也是拍了很多照片，上课的笔记都要带走；这一次很仓促，想要把工作全部完成也还是留了一些没搞定，想要跟大家好好告别也全部概略到一封群发的邮件。Zhichao跟我说“有啥好难过的，大家都是奔更好的前程”，“早点下班不开心吗？”。哈哈可能我要更习惯未来人生中一次次匆忙甚至都来不及的告别吧，但我知道不管以什么方式告别，过去的每个日子，认识的每个人，它们留在了我的生命里，我会想起training那四个月与小伙伴一起听课做lab的开心，会在未来的工作中用到在BB得到的知识和指导，会想念17楼那条小丑鱼。更重要的，会在迷惘的时候想起自己刚来BB时的初心；在失意的时候想起来大家的鼓励和肯定。会在更senior的时候耐心细心的对待他人，因为我曾经被那么对待过；会更开放一点试着跟同事成为更好的朋友；会记得这一份工作里没做好的地方，成为更好的engineer和team member。 </p>
-<p>我总说Bloomberg对我有知遇之恩，仿佛自己是个怀才不遇的人才。但感恩是真的，此时此刻只觉得感恩。</p>
-<p>Erica, Farzaneh, Matt, Anand, Melvel, Zak, Derek, Ricky, Alex, Minita, Zhichao, Jamie, Kyuwon, Charlotte, Yuxuan, Janani, Lev, Pat, Rebecca, JK, Tomer, Wenqian, Ryan, Jonathan, Mike… 啊朋友再见吧，在各自更美好的生活里。</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2018/07/27/啊朋友再见/" class="archive-article-date">
-  	<time datetime="2018-07-27T23:43:26.000Z" itemprop="datePublished"><i class="icon-clock"></i>2018-07-27</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂/">杂</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -819,7 +815,7 @@
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/all/" style="font-size: 20px;">all</a> <a href="/tags/技术/" style="font-size: 12.5px;">技术</a> <a href="/tags/机器学习/" style="font-size: 12.5px;">机器学习</a> <a href="/tags/杂/" style="font-size: 17.5px;">杂</a> <a href="/tags/电影/" style="font-size: 10px;">电影</a> <a href="/tags/读书/" style="font-size: 12.5px;">读书</a> <a href="/tags/随想/" style="font-size: 15px;">随想</a>
+    				<a href="/tags/all/" style="font-size: 20px;">all</a> <a href="/tags/技术/" style="font-size: 12px;">技术</a> <a href="/tags/机器学习/" style="font-size: 14px;">机器学习</a> <a href="/tags/杂/" style="font-size: 18px;">杂</a> <a href="/tags/电影/" style="font-size: 10px;">电影</a> <a href="/tags/读书/" style="font-size: 12px;">读书</a> <a href="/tags/随想/" style="font-size: 16px;">随想</a>
     			</div>
     	</section>
     

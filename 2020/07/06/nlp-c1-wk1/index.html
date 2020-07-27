@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://tracycuican.github.io">
-  <title>Tag: 随想 | --async</title>
+  <title>Notes for NLP Course1 Week1 | --async</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="很高兴认识你。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="--async">
-<meta property="og:url" content="https://tracycuican.github.io/tags/随想/index.html">
+  <meta name="description" content="Logistic RegressionTwitter text data preprocessing steps:1.Stem    from nltk.stem import PorterStemmer2.Remove special symbols    123456789# remove stock market tickers like $GE   tweet = re.sub(r&amp;apo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Notes for NLP Course1 Week1">
+<meta property="og:url" content="https://tracycuican.github.io/2020/07/06/nlp-c1-wk1/index.html">
 <meta property="og:site_name" content="--async">
-<meta property="og:description" content="很高兴认识你。">
+<meta property="og:description" content="Logistic RegressionTwitter text data preprocessing steps:1.Stem    from nltk.stem import PorterStemmer2.Remove special symbols    123456789# remove stock market tickers like $GE   tweet = re.sub(r&amp;apo">
+<meta property="og:updated_time" content="2020-07-26T15:36:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="--async">
-<meta name="twitter:description" content="很高兴认识你。">
+<meta name="twitter:title" content="Notes for NLP Course1 Week1">
+<meta name="twitter:description" content="Logistic RegressionTwitter text data preprocessing steps:1.Stem    from nltk.stem import PorterStemmer2.Remove special symbols    123456789# remove stock market tickers like $GE   tweet = re.sub(r&amp;apo">
   
   
     <link rel="icon" href="/assets/image/favicon.png">
@@ -135,234 +136,102 @@
 </nav>
 
       <div class="body-wrap">
+        <article id="post-nlp-c1-wk1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
         
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/31/一八一九/" class="archive-article-date">
-  	<time datetime="2019-01-01T04:22:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2018-12-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/31/一八一九/">一八一九</a>
+    <h1 class="article-title" itemprop="name">
+      Notes for NLP Course1 Week1
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随想/">随想</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/30/风筝的故事/" class="archive-article-date">
-  	<time datetime="2018-09-30T15:26:08.000Z" itemprop="datePublished"><i class="icon-clock"></i>2018-09-30</time>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h2><h3 id="Twitter-text-data-preprocessing-steps"><a href="#Twitter-text-data-preprocessing-steps" class="headerlink" title="Twitter text data preprocessing steps:"></a>Twitter text data preprocessing steps:</h3><p>1.Stem<br>    <code>from nltk.stem import PorterStemmer</code><br>2.Remove special symbols<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># remove stock market tickers like $GE</div><div class="line">   tweet = re.sub(r&apos;\$\w*&apos;, &apos;&apos;, tweet)</div><div class="line">   # remove old style retweet text &quot;RT&quot;</div><div class="line">   tweet = re.sub(r&apos;^RT[\s]+&apos;, &apos;&apos;, tweet)</div><div class="line">   # remove hyperlinks</div><div class="line">   tweet = re.sub(r&apos;https?:\/\/.*[\r\n]*&apos;, &apos;&apos;, tweet)</div><div class="line">   # remove hashtags</div><div class="line">   # only removing the hash # sign from the word</div><div class="line">   tweet = re.sub(r&apos;#&apos;, &apos;&apos;, tweet)</div></pre></td></tr></table></figure></p>
+<p>3.Tokenize<br>    <code>from nltk.tokenize import TweetTokenizer</code><br>4.Remove stop words<br>    <code>from nltk.corpus import stopwords</code></p>
+<h3 id="Functions-I-learned"><a href="#Functions-I-learned" class="headerlink" title="Functions I learned"></a>Functions I learned</h3><p><em><code>np.dot()</code> for matrix mulplication
+</em><code>np.exp()</code> for matrix exponential<br><em><code>np.log()</code> for matrix logarithm
+</em><code>dict.get(key, substitution_value)</code> instead of [] to avoid key error.<br><em><code>np.asarray()</code> to convert a list to a numpy array, difference with <code>np.array()</code> is that <code>np.array()</code> does copy.
+</em><code>np.squeeze()</code> to make an (m, 1) dimensional array [[],[],[]] into an (m,) array [,,,], when a list<br>is converted to an array using <code>np.asarray()</code>, it’s shaped as (m,).</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2020/07/06/nlp-c1-wk1/" class="archive-article-date">
+  	<time datetime="2020-07-07T02:43:07.000Z" itemprop="datePublished"><i class="icon-clock"></i>2020-07-06</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/30/风筝的故事/">风筝的故事</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随想/">随想</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/31/一七一八/" class="archive-article-date">
-  	<time datetime="2018-01-01T03:20:46.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-12-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/31/一七一八/">一七一八</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随想/">随想</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/12/故国神游，多情应笑我/" class="archive-article-date">
-  	<time datetime="2017-04-13T02:57:35.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-04-12</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/12/故国神游，多情应笑我/">故国神游，多情应笑我</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随想/">随想</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/31/一六一七/" class="archive-article-date">
-  	<time datetime="2017-01-01T04:54:50.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/31/一六一七/">一六一七</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随想/">随想</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/18/听/" class="archive-article-date">
-  	<time datetime="2016-12-19T00:20:57.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/18/听/">听</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随想/">随想</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <a href="/2020/07/12/nlp-c1-wk3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Notes for NLP Course1 Week2 &amp; 3
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2020/03/14/末日杂念/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">末日杂念</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
+</nav>
 
-    
+
+
+
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="nlp-c1-wk1" data-title="Notes for NLP Course1 Week1" data-url="https://tracycuican.github.io/2020/07/06/nlp-c1-wk1/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"tracycuican"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 
       </div>
@@ -385,9 +254,9 @@
 		mathjax: false,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

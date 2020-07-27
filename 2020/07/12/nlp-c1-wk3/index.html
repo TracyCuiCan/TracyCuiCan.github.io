@@ -6,20 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://tracycuican.github.io">
-  <title>一七一八 | --async</title>
+  <title>Notes for NLP Course1 Week2 &amp; 3 | --async</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="提笔之前，先让我们来高歌一曲《一无所有》，因为这完美概括了我的2017. 早上起来跟三胖说，我这一年一事无成一无所有，明年也不见得会变好，总他奶奶个腿的结，展他爷爷个脚的望，恨不得瘫在床上丧一天。没错，单从结果来看的话，这一年着实没有任何成就，咳咳。这一年总计读了5本书（飞机上和失眠时），看了17部电影，追了两部剧（还都是在holiday season补的），忙啊忙，然而去年的新年愿望和生日愿望">
+  <meta name="description" content="Naive Bayes &amp;amp; Word EmbeddingNaive Bayes
+Bayes rule
+Log likelihood
+Laplacian smoothing
+For sentiment analysis, calculate prior as the the number of positive and negative documents,calculate conditi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一七一八">
-<meta property="og:url" content="https://tracycuican.github.io/2017/12/31/一七一八/index.html">
+<meta property="og:title" content="Notes for NLP Course1 Week2 & 3">
+<meta property="og:url" content="https://tracycuican.github.io/2020/07/12/nlp-c1-wk3/index.html">
 <meta property="og:site_name" content="--async">
-<meta property="og:description" content="提笔之前，先让我们来高歌一曲《一无所有》，因为这完美概括了我的2017. 早上起来跟三胖说，我这一年一事无成一无所有，明年也不见得会变好，总他奶奶个腿的结，展他爷爷个脚的望，恨不得瘫在床上丧一天。没错，单从结果来看的话，这一年着实没有任何成就，咳咳。这一年总计读了5本书（飞机上和失眠时），看了17部电影，追了两部剧（还都是在holiday season补的），忙啊忙，然而去年的新年愿望和生日愿望">
-<meta property="og:image" content="https://tracycuican.github.io/2017/12/31/一七一八/brooklyn_bridge.jpg">
-<meta property="og:updated_time" content="2018-01-01T04:58:50.000Z">
+<meta property="og:description" content="Naive Bayes &amp;amp; Word EmbeddingNaive Bayes
+Bayes rule
+Log likelihood
+Laplacian smoothing
+For sentiment analysis, calculate prior as the the number of positive and negative documents,calculate conditi">
+<meta property="og:updated_time" content="2020-07-26T15:37:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一七一八">
-<meta name="twitter:description" content="提笔之前，先让我们来高歌一曲《一无所有》，因为这完美概括了我的2017. 早上起来跟三胖说，我这一年一事无成一无所有，明年也不见得会变好，总他奶奶个腿的结，展他爷爷个脚的望，恨不得瘫在床上丧一天。没错，单从结果来看的话，这一年着实没有任何成就，咳咳。这一年总计读了5本书（飞机上和失眠时），看了17部电影，追了两部剧（还都是在holiday season补的），忙啊忙，然而去年的新年愿望和生日愿望">
-<meta name="twitter:image" content="https://tracycuican.github.io/2017/12/31/一七一八/brooklyn_bridge.jpg">
+<meta name="twitter:title" content="Notes for NLP Course1 Week2 & 3">
+<meta name="twitter:description" content="Naive Bayes &amp;amp; Word EmbeddingNaive Bayes
+Bayes rule
+Log likelihood
+Laplacian smoothing
+For sentiment analysis, calculate prior as the the number of positive and negative documents,calculate conditi">
   
   
     <link rel="icon" href="/assets/image/favicon.png">
@@ -138,7 +148,7 @@
 </nav>
 
       <div class="body-wrap">
-        <article id="post-一七一八" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-nlp-c1-wk3" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -148,7 +158,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      一七一八
+      Notes for NLP Course1 Week2 &amp; 3
     </h1>
   
 
@@ -156,26 +166,49 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <img src="/2017/12/31/一七一八/brooklyn_bridge.jpg" alt="Baybye 2017" title="Baybye 2017">
-<p>提笔之前，先让我们来高歌一曲《一无所有》，因为这完美概括了我的2017. 早上起来跟三胖说，我这一年一事无成一无所有，明年也不见得会变好，总他奶奶个腿的结，展他爷爷个脚的望，恨不得瘫在床上丧一天。没错，单从结果来看的话，这一年着实没有任何成就，咳咳。这一年总计读了5本书（飞机上和失眠时），看了17部电影，追了两部剧（还都是在holiday season补的），忙啊忙，然而去年的新年愿望和生日愿望都没有实现，再然后唰的一下又要过新年了，所以2018我都不敢有任何奢望。</p>
-<p>但毕竟过了365个日夜，时间都浪费在哪里了？于是我翻了一下手机相册，以下便是概览：大都会看了一个很棒的展览；去了一期纽约文化沙龙；回国过了春节；看了哈利波特与魔法石的movie in concert演奏；回了趟Montreal；送别了几个老朋友，结识了几个新朋友；参加了一次夜跑；泡泡结了婚（好像跟我并没有关系）；跟觉霖大师去禅修；学了两个月游泳没有学会；看了美网；去了阿拉斯加；开始自己住；参加了郑外校友会；去看了五月天演唱会；勾搭上了一只猫；哈哈大概就这么多。</p>
-<p>2017的关键字是执着与放下，今年纠结了一件事情也纠结了一个人，都没有结果，虽然此时此刻都可以坦然面对，但当时当下还握在手里没放下的我写道：如果说求不得跟放不下之间是执着和未能实现的自我；那么跟放下之间大概是无数个有始无终的念头，很多个10k，周杰伦的歌，以及一枚月亮。啧啧，深深的钻在牛角尖里无法自拔的我。六七月的时候因为一些事情失眠，连续好几周每天只睡5个小时；九十月份因为另一些事情，大半夜心情郁结，突然醒来大哭一场继续去睡；再然后就是每日每夜的压力大，在希望和失望之间循环，身心俱疲。这是折腾与被折腾的一年，从年初到年尾，片刻不得闲。所以我觉得这一年过的特别充实，一秒钟都没有浪费。执着，还像小时候一样，以为想要一件东西努力就能得到，但是成人世界和社会生活里，只要努力就能实现的事情少之又少，完成一件事情尚且需要运气，跟别提人际关系里还有一个“对方”，于是我痛苦、不服、一拳出去打到空气里，怎么办呢，总不能去死吧，只能学会放下。而所谓放下，也不过是承认了这其中的时机和“缘分”， 知道结果无法强求，劝自己调整心态而已，还是无奈。</p>
-<p>当现在的状态和付出的努力还配不上想要的结果，却又拼命想要的时候，人就陷入这种求不得放不下的困境。当然好多事情或许再怎么努力都不一定得到，但对于现在的我来说，有些事情还不能放下，只是还没到收获的季节，不要泄气，继续积累更多，把眼睛放低一点，手抬高一点，或许下次就能够到啦！</p>
-<p>这一年虽然基调是压抑，但也是看过几处难忘的风景，赏过几回惊艳的月色，跟喜欢的朋友们走过几段难忘的路，有过几次“灵魂对话”，勇敢的不计后果的做了一些事情，一直朝着想去的方向坚持努力没放弃，还行还行。</p>
-<p>早上想到了斯佳丽，算是文学作品里我目前最喜欢的女性人物了，高一第一次读到《飘》就印象深刻，后来电影里费雯丽的演绎也让想象活了起来。后来高二某次在一个二手书店买到另一个人的续写《斯佳丽》，虽然远没有原著精彩，但书里面斯佳丽真的跑去追回白瑞德了，圆了我的念想。为什么要说这个，因为突然发现我喜欢斯佳丽是有理由的，她的迷之自信，迷之执着，认定的事情不是自己醒悟谁也拉不回来，也因此犯错，由于执着忽略眼前的人和事，坚韧，永远怀抱希望，跟我简直如出一辙。而我也会记得，在一次又一次失败受挫之后告诉自己“Tomorrow is another day!”</p>
-<p>这几年在纽约的新年传统是去布鲁克林大桥走一走，今天冒着被冻傻的危险也去了，迎面走向高楼林立的纽约下城，感觉自己好像把旧年的遗憾和不如意留到过去，准备好迎接新年的期盼和好运了。然而我一点也不信只靠时间就能带来崭新的开始，我只相信一点一点地努力和改变，慢慢走向更好的生活和更好的自己，最终走到崭新的结局。我不想说2018请对我好一点，我知道她一样会把我虐的生无可恋。但此刻的我比着去年今日的我更加从容和勇敢，那就继续认真的，不后悔的向着自己想要的生活努力吧。With that, let 2018 begin! 新年快乐！</p>
+        <h2 id="Naive-Bayes-amp-Word-Embedding"><a href="#Naive-Bayes-amp-Word-Embedding" class="headerlink" title="Naive Bayes &amp; Word Embedding"></a>Naive Bayes &amp; Word Embedding</h2><h3 id="Naive-Bayes"><a href="#Naive-Bayes" class="headerlink" title="Naive Bayes"></a>Naive Bayes</h3><ul>
+<li>Bayes rule</li>
+<li>Log likelihood</li>
+<li>Laplacian smoothing</li>
+<li>For sentiment analysis, calculate prior as the the number of positive and negative documents,<br>calculate conditional probablity as the frequency of the word in positive and negative documents.</li>
+</ul>
+<h4 id="Application-of-Naive-Bayes"><a href="#Application-of-Naive-Bayes" class="headerlink" title="Application of Naive Bayes"></a>Application of Naive Bayes</h4><ul>
+<li>Sentiment analysis</li>
+<li>Author identification</li>
+<li>Information retrieval</li>
+<li>Word disambiguation</li>
+</ul>
+<h3 id="Naive-Bayes-Assumptions"><a href="#Naive-Bayes-Assumptions" class="headerlink" title="Naive Bayes Assumptions"></a>Naive Bayes Assumptions</h3><ul>
+<li>Independence: Not true in NLP</li>
+<li>Relative frequency of classes affect the model, data is often imbalanced.</li>
+</ul>
+<h3 id="Word-Embedding"><a href="#Word-Embedding" class="headerlink" title="Word Embedding"></a>Word Embedding</h3><h4 id="Linear-algebra-operations-in-Numpy"><a href="#Linear-algebra-operations-in-Numpy" class="headerlink" title="Linear algebra operations in Numpy"></a>Linear algebra operations in Numpy</h4><p>Difference between lists and numpy arrays:</p>
+<p>The <code>+</code> operator on NumPy arrays perform an element-wise addition, while the same operation on Python lists results in a list concatenation, same with the <code>*</code> operator<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">alist = [1, 2, 3, 4, 5]</div><div class="line">narray = np.array([1, 2, 3, 4])</div><div class="line"></div><div class="line">print(narray + narray)</div><div class="line">print(alist + alist)</div><div class="line">[2 4 6 8]</div><div class="line">[1, 2, 3, 4, 5, 1, 2, 3, 4, 5]</div><div class="line"></div><div class="line">print(narray * 3)</div><div class="line">print(alist * 3)</div><div class="line">[ 3  6  9 12]</div><div class="line">[1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5]</div></pre></td></tr></table></figure></p>
+<p>The product operator <code>*</code> when used on arrays or matrices indicates element-wise multiplications. Do not confuse it with the dot product.</p>
+<p>Find norm of a nparray or matrix: <code>np.linalg.norm(X)</code></p>
+<p><strong>axis=0</strong> in params performs column wise operations while <strong>axis=1</strong> in params performs row wise operation.</p>
+<h4 id="Vector-space"><a href="#Vector-space" class="headerlink" title="Vector space"></a>Vector space</h4><p>Similarity between two vectors can be calculated by Euclidean distance or cosine similarity, cosine similarity is prefered.</p>
+<ul>
+<li>Euclidean distance: <code>np.linalg.norm(A, B)</code></li>
+<li>Cosine similarity: <code>np.dot(A, B) / np.linalg.norm(A) / np.linalg.norm(B)</code></li>
+</ul>
+<p>PCA for dimension reduction.</p>
+<p><code>np.cov(m, rowvar=True)</code> to calculate the covariance matrix, <code>rowvar</code> is True by default, then each column is a sample and each row is a feature. </p>
+<p><code>np.linalg.eigh(a)</code> to calculate eigen value and eigen vector. If <code>a</code> is symmetric, using <code>np.linalg.eigh()</code> is much more performant than <code>np.linalg.eig()</code>.</p>
+<p><code>np.argsort()</code> sorts the values in an array from smallest to largest, then returns the indices from this sort. To apply the sorted index row wise, do <code>X[indices_sorted]</code>, to apply the sorted index column wise, do <code>X[:, indices_sorted]</code>.</p>
+<p><code>X[::-1]</code> to reverse the order of a list.</p>
 
       
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2017/12/31/一七一八/" class="archive-article-date">
-  	<time datetime="2018-01-01T03:20:46.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-12-31</time>
+      <a href="/2020/07/12/nlp-c1-wk3/" class="archive-article-date">
+  	<time datetime="2020-07-13T02:53:53.000Z" itemprop="datePublished"><i class="icon-clock"></i>2020-07-12</time>
 </a>
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随想/">随想</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
 	</div>
 
       
@@ -188,18 +221,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/03/02/长恨歌究竟在恨什么/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/07/25/nlp-c1-wk4/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          长恨歌究竟在恨什么
+          Notes for NLP Course1 Week4
         
       </div>
     </a>
   
   
-    <a href="/2017/08/15/无题/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">无题</div>
+    <a href="/2020/07/06/nlp-c1-wk1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Notes for NLP Course1 Week1</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -217,7 +250,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="一七一八" data-title="一七一八" data-url="https://tracycuican.github.io/2017/12/31/一七一八/"></div>
+	<div class="ds-thread" data-thread-key="nlp-c1-wk3" data-title="Notes for NLP Course1 Week2 &amp; 3" data-url="https://tracycuican.github.io/2020/07/12/nlp-c1-wk3/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
