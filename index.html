@@ -137,6 +137,81 @@
       <div class="body-wrap">
         
   
+    <article id="post-nlp-c2-wk3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/02/nlp-c2-wk3/">nlp-c2-wk3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<h3 id="N-gram"><a href="#N-gram" class="headerlink" title="N-gram"></a>N-gram</h3><p>A sequence of N words. N-gram probability \(P(\omega_N|\omega_1^{N - 1}) = \frac{C(\omega_1^{N - 1}\omega_N)}{C(\omega_1^{N - 1})}\), and notice that \(C(\omega_1^{N - 1}\omega_N) = C(\omega_1^N)\).</p>
+<p>When preprocessing sentence into N-gram models, we need to add character that mark the start and end of the sentence with <code>&lt;s&gt;</code> and <code>&lt;/s&gt;</code> separately. For example, for n-gram preprocessing, <code>tokenized_sentence = [&quot;&lt;s&gt;&quot;] * (n - 1) + tokenized_sentence + [&quot;&lt;/s&gt;&quot;]</code>.</p>
+<h3 id="Probability-of-a-sentence"><a href="#Probability-of-a-sentence" class="headerlink" title="Probability of a sentence"></a>Probability of a sentence</h3><p>Apply the chain rule, that \(P(A, B, C, D) = P(A)P(A|B)(C|A, B)P(D|A, B, C)\), this exact formula has the limitation that the long subsequences of our testing sentence are almost never represented in the training corpus. To approximate sequence probability, we apply Markov assumption: only last N - 1 words matter, that is, \(P(\omega_n|\omega_1^{n - 1})\approx P(\omega_n|\omega_k^{n - 1})\) where <code>k = n - N + 1</code></p>
+<h3 id="Generative-Language-Model"><a href="#Generative-Language-Model" class="headerlink" title="Generative Language Model"></a>Generative Language Model</h3><p>Once you have the n-gram probability model, you can use it to generate text by choosing sentence start -&gt; choose next n-gram starting with the last n - 1 word -&gt; continue until &lt;\s&gt; is picked.</p>
+<h3 id="Perplexity"><a href="#Perplexity" class="headerlink" title="Perplexity"></a>Perplexity</h3><p>Perplexity is a measure of complexity in a sample of texts like how complex that text is. Smaller perplexity means better model, good language models have PP from 20 to 60.<br>$$PP(W) = P(s_1, s_2, …, s_m)^{-\frac{1}{m}}$$</p>
+<p>Log Perplexity<br>\(\log PP(W) = -\frac{1}{m}\sum_1^m\log_2(P(\omega_i|\omega_j))\) where <code>j = i - 1</code>.</p>
+<h3 id="Out-of-vocabulary-word-OOV"><a href="#Out-of-vocabulary-word-OOV" class="headerlink" title="Out of vocabulary word (OOV)"></a>Out of vocabulary word (OOV)</h3><p>OOV means unknown word, a special tag <code>&lt;UNK&gt;</code> is used to represent OOV in corpus and in input. To create a vocabulary V, you can use different criterias:</p>
+<ul>
+<li>Min word frequency <code>f</code></li>
+<li>Max size of V, include words by frequency</li>
+</ul>
+<blockquote>
+<p><strong><em>NOTE:</em></strong> When comparing perplexity, only compare LMs with the same V. </p>
+</blockquote>
+<h3 id="Handle-missing-n-grams"><a href="#Handle-missing-n-grams" class="headerlink" title="Handle missing n-grams"></a>Handle missing n-grams</h3><ul>
+<li>Smoothing<br>  – Add one smoothing<br>  – Add k smoothing</li>
+<li>Backoff, if N-gram missing =&gt; use (N-1)-gram.</li>
+<li>Interpolation<br>$$\hat{P}(\omega<em>{n-2}\omega</em>{n-1}) = \lamda x P(\omega<em>n|\omega</em>{n-2}\omega_{n-1}) + \lamda_2 x P(\omega<em>n|\omega</em>{n - 1} + \lamda_3 x P(\omega_n)$$<br>and \(\sum_i \lamda_i = 1\)</li>
+</ul>
+<h3 id="Python-Utils"><a href="#Python-Utils" class="headerlink" title="Python Utils"></a>Python Utils</h3><p>NLP toolkit <code>nltk</code>, <code>import nltk</code>, to use it <code>tokenized_sentence = nltk.tokenize(sentence)</code>.</p>
+<p>To remove special characters in the sentence <code>corpus = re.sub(r&quot;[^a-zA-Z0-9.?!]&quot;, &quot;&quot;, corpus)</code> keeps only digits, characters and ‘.’ ‘?’ ‘!’.</p>
+<p>Creating a tuple for a single word <code>(word,)</code>, then merge it with another tuple <code>tuple1 + (word,)</code>.</p>
+<p>A fast way to divide each element in a \b{pandas Dataframe} matrix by it’s row sum:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">row_sums = matrix.sum(axis=1)</div><div class="line">result = matrix.div(row_sums, axis=0)</div></pre></td></tr></table></figure></p>
+<p><code>str.startswith()</code> to test if a word starts with a prefix.</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2020/08/02/nlp-c2-wk3/" class="archive-article-date">
+  	<time datetime="2020-08-02T19:10:59.000Z" itemprop="datePublished"><i class="icon-clock"></i>2020-08-02</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-nlp-c2-wk2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -180,7 +255,7 @@
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li></ul>
 	</div>
 
       
@@ -234,7 +309,7 @@
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li></ul>
 	</div>
 
       
@@ -287,7 +362,7 @@
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li></ul>
 	</div>
 
       
@@ -367,7 +442,7 @@
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li></ul>
 	</div>
 
       
@@ -422,7 +497,7 @@
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li></ul>
 	</div>
 
       
@@ -685,62 +760,6 @@
 
 
   
-    <article id="post-风筝的故事" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/30/风筝的故事/">风筝的故事</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>很久很久以前，有一个人，他得到了一只又大又好看的风筝，他向他遇到的所有人炫耀“看我的风筝！我要去跟我的风筝一起去玩了！”。于是他带着他的风筝来到田野上，想到前方未知的风景，他们都很兴奋，不可能想得到，虽然起点相同，但旅途一旦开始他们的距离就会越拉越大。</p>
-<p>放风筝的人开始慢慢跑起来了，最开始他是要跑在前面的，勇敢的无所畏惧，满心想着要带风筝飞到蓝天上看看不一样的风景啊。风筝看着前面的人，有点犹豫不安，她在想今天是不是个适合飞起来的好天气呢？前面拉着我的这个人力量够不够？但放风筝的人坚定有力的牵引打消了她的顾虑。他们互相试探一下对方，有没有抓牢，有没有跟紧，也在试探的过程中多了依赖和信任。放风筝嘛，有风自然是好的，没有风甚至逆风也可以飞，只要风筝和放风筝的人配合默契，就能玩的很开心。</p>
-<p>风筝慢慢地飞得高了，放风筝的人其实不太能掌握手中的线，什么时候应该收一收什么时候应该放一放。他一方面想着反正线在我手里，一方面又怕风太大风筝飞得太高。可是起飞之后就没有太多时间考虑这些了，他要注意前方和自己脚下，田野里不全是好路，也要看清自己要跑向哪个方向；而风筝在天上也不轻松，她怕自己如果一直呆在同一高度，风停了很快就落下来，她要去寻找风的方向，试着去借着风力飞往更高的地方，所以有些时候，他们都在专注自己。但至少线还没挣紧，更多时候，放风筝的人会说一说他一路看到的花花草草，跑起来是否得力；风筝会说一说她看到的高楼大树，风向有没有变化。他们依然开心的向前跑着，在线的两端。</p>
-<p>风筝飞得越来越高了，她喜欢在天上的感觉，特别自由，她对放风筝的人说她觉得自己不是一只风筝，而是一只鸟，飞到哪里停在哪里完全凭自由意志的一只鸟。可是放风筝的人开始觉得有点累了，跑的太远之前同行的人都沿路渐渐停下来了，他也想停下来歇一歇，风景已经看了很多，他们也一起玩得很开心，足够收藏起来给别人讲故事了。但是风筝一直告诉他她远远看到前面有一片特别美的湖畔，很多人在那里玩耍，他们可以走到那再休息，不远了就快到了。他不想去了，他开始放慢速度寻找休息的地方，但是风筝还在飞，而手里的线就像这世间任何其他事物一样都有尽头，线放完了，紧紧握着有点疼，于是他说他要收线了。风筝真的很想再往前走一走，真的不远，湖畔很美好，他们可以开心的想停留多久就停留多久。这一路跑了这么远，她不想在离终点只剩100米的时候放弃，她试图拉着放风筝的人往前走一走，“就算他现在疼一下也没什么，到了目的地他就会感谢我的” 风筝这么想着。</p>
-<p>放风筝的人呢，刚开始也是对湖畔怀抱向往，尽管他知道自己体力不太行了，还是努力在往前走…渐渐的他连向往都没了，湖畔有什么好，我更喜欢旁边大树底下，大树底下也有很多人在，他们手里各种各样的玩具笑得很开心。哪里有完美的落脚点，心安之处即是归宿，他试图把线往回收，可是发现风筝已经飞得太高太远自己连收线的气力也不够了，拉拉扯扯之中，风筝说“你放手吧，我想自己飞一下，飞到前面看一看，再回来找到你。”她真的以为自己是一只鸟了。放风筝的人不舍得的慢慢放开手，他反复挽留风筝劝她留下来，因为他心里隐约知道一旦放手，他就不可能把线重新握在手里，但一心要往前的风筝哪里顾得。虽然无奈，风筝已经挣脱出他的手心他只好接受，于是他停下脚步，试着欣赏身边的风景，好心人看他落寞，便给了他一个新的玩具，尽管他经常会抬头望一望天上，牵挂风筝飞到哪里了，但也只是牵挂而已。每当想起来，他就想起自己是被抛弃的那个，新玩具的吸引加上自我的暗示，他后来不再想了，太累了，并且没有意义。</p>
-<p>风筝呢，经历过放手那一瞬间的解脱，她觉得放松，“作为一只鸟，当然可以在想回去的时候飞回去啊”。但其实她是借着风力来到了湖畔，剩下的那一小段路，磕磕绊绊的飞行旅程让她意识到自己还是一只风筝，有人拿线牵引着她她才飞得安稳，没有地上的人牵挂，风景也没了滋味。她想念放风筝的人了，只有线在他手里的时候她才想要飞得更高更远，而现在她不想飞了。她跑去问放风筝的人：“我在原地等你，你不需要着急，慢慢走过来，把我带回去好吗？”，没有回应…她又问放风筝的人：“如果你真的不想走这一段路，我等着风向合适的时候自己回去好吗？”，依然没有回应… “喂，你还在等我吗？”…不了啊，放风筝的人有了新的玩具和新的小伙伴，一切都是他想要的，他为什么还要去管那只风筝呢？或许来了一阵大风，她被吹破了挂在树杈上；或许来了一场雨，她被淋湿了打到地上，但那已经不是他的风筝了，他们一起开心快乐的走过一段路就够了。</p>
-<p>这就是故事的结局了，回头看一下，他们一起走过的那一段路，大多数时候都在各自看各自的风景，于是有了不同的想法，于是想要去不同的地方。他们一起努力奔跑飞行了好久，以为能等到风停云散的时刻，一起偎倚着看风景，但现实世界里放开了手确实就很难重逢了。你觉得这是命运还是选择？你觉得他们是从那一段路的哪个刻度开始错过？你觉得假设他们当初做了什么不同的选择可以改变故事的结局？风筝和放风筝的人，应该有什么样的结局才算好？如果这注定是个悲伤的故事，那么它存在的意义是什么呢？</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2018/09/30/风筝的故事/" class="archive-article-date">
-  	<time datetime="2018-09-30T15:26:08.000Z" itemprop="datePublished"><i class="icon-clock"></i>2018-09-30</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随想/">随想</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -804,7 +823,7 @@
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/all/" style="font-size: 20px;">all</a> <a href="/tags/技术/" style="font-size: 12.5px;">技术</a> <a href="/tags/机器学习/" style="font-size: 15px;">机器学习</a> <a href="/tags/杂/" style="font-size: 17.5px;">杂</a> <a href="/tags/电影/" style="font-size: 10px;">电影</a> <a href="/tags/读书/" style="font-size: 12.5px;">读书</a> <a href="/tags/随想/" style="font-size: 15px;">随想</a>
+    				<a href="/tags/NLP/" style="font-size: 16px;">NLP</a> <a href="/tags/all/" style="font-size: 20px;">all</a> <a href="/tags/技术/" style="font-size: 14px;">技术</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/杂/" style="font-size: 18px;">杂</a> <a href="/tags/电影/" style="font-size: 12px;">电影</a> <a href="/tags/读书/" style="font-size: 14px;">读书</a> <a href="/tags/随想/" style="font-size: 16px;">随想</a>
     			</div>
     	</section>
     
