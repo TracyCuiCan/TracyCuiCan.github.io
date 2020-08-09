@@ -137,6 +137,99 @@
       <div class="body-wrap">
         
   
+    <article id="post-nlp-c2-wk4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/04/nlp-c2-wk4/">nlp-c2-wk4</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Word-representation"><a href="#Word-representation" class="headerlink" title="Word representation"></a>Word representation</h3><ul>
+<li>Integer, assign a unique integer ID to each word.</li>
+<li>One-hot vector, each word is a vector of vocabulary length and only that word is 1.</li>
+<li>word embedding vector, represent word in a relatively low dimension and carries the meaning of words.</li>
+</ul>
+<p>Word embedding needs a corpus and an embedding method (normally a machine learning model). </p>
+<h4 id="Embedding-methods"><a href="#Embedding-methods" class="headerlink" title="Embedding methods"></a>Embedding methods</h4><ul>
+<li><p>word2vec</p>
+<ul>
+<li>Continuous bag-of-words (CBOW), predict a missing word given the surrounding words.</li>
+<li>Continuous skip-gram with negative sampling (SGNS), predict the word surrounding a given input word.</li>
+</ul>
+</li>
+<li><p>Global Vectors (GloVe)<br>Factorize the logarithm of the corpuses word co-occurence matrix.</p>
+</li>
+<li><p>fastText<br>Based on the skip-gram model and takes into account the structure of words by representing words as an n-gram of characters, this enables the model to support OOV words.</p>
+</li>
+</ul>
+<p>More sophisticated modeling approaches that uses advanced deep neural network architecture. In the above models a given word always has the same embedding, in those more advanced models, the words have different embeddings depending on their context.</p>
+<ul>
+<li>Bidirectional Encoder Representations from Transformers (BERT)</li>
+<li>Embeddings from Language Models (ELMO)</li>
+<li>Generative Pretraining 2 (GPT-2)</li>
+</ul>
+<h3 id="Continuous-bag-of-words"><a href="#Continuous-bag-of-words" class="headerlink" title="Continuous bag of words"></a>Continuous bag of words</h3><p>Predicts a missing word based on the surrounding words. The rational is if two unique words are both frequently surrounded by a similar sets of words when used in various contexts, they tend to be related in their meaning. </p>
+<p>Choose a hyper-parameter <code>C</code> (context half-size), if <code>C = 2</code>, the training input data is two words before a word plus two words after a word, the training output data is the word itself. While training, you first preprocess the data by converting to lowercase; process punctuation, numbers, and special characters; deal with emoji and hashtags etc. Then each word can be represented by a one-hot vector, and the context words is represented by the average of individual one-hot vectors. </p>
+<h3 id="Word-Embedding-Evaluation"><a href="#Word-Embedding-Evaluation" class="headerlink" title="Word Embedding Evaluation"></a>Word Embedding Evaluation</h3><ul>
+<li><p>Intrinsic evaluation, test relationships between words.</p>
+<ul>
+<li>Analogies</li>
+<li>Clustering</li>
+<li>Visualization</li>
+</ul>
+</li>
+<li><p>Extrinsic evaluation, test word embeddings on external task, use the performance of the task as a proxy for the quality of the word embeddings, e.g. name entity recognition, POS tagging. This method is more time consuming and diffcult to troubleshoot. </p>
+</li>
+</ul>
+<h3 id="Python-utils"><a href="#Python-utils" class="headerlink" title="Python utils"></a>Python utils</h3><p>For emoji preprocessing, import the emoji package.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">import emoji</div><div class="line"></div><div class="line">data = re.sub(r&apos;[,!?;-]+&apos;, &apos;.&apos;, corpus)</div><div class="line">data = [ch.lower() for ch in data if ch.isalpha() or ch == &apos;.&apos; or emoji.get_emoji_regexp().search(ch)]</div></pre></td></tr></table></figure></p>
+<p><code>yield</code> constructs a generator that returns multiple times, when it runs, it builds an iterator, and <code>next</code> gets the next available value from an iterator.</p>
+<p>Activation functions:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># Implement ReLU</div><div class="line">def relu(z):</div><div class="line">	result = z.copy()</div><div class="line">	result[result &lt; 0] = 0</div><div class="line">	return result</div></pre></td></tr></table></figure></p>
+<p>Or just <code>np.maximum(0, z)</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># Implement Softmax</div><div class="line">def softmax(z):</div><div class="line">	e_z = np.exp(z)</div><div class="line">	sum_e_z = np.sum(e_z)</div><div class="line">	return e_z / sum_e_z</div></pre></td></tr></table></figure>
+<p>Use <code>nltk.FreqDist(word for word in data)</code> to compute the frequency distribution of the words in the dataset.</p>
+<p>For vector initialization, often use <code>np.random.rand(d0, d1, ..., dn)</code></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2020/08/04/nlp-c2-wk4/" class="archive-article-date">
+  	<time datetime="2020-08-04T14:09:40.000Z" itemprop="datePublished"><i class="icon-clock"></i>2020-08-04</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/all/">all</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-nlp-c2-wk3" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -706,60 +799,6 @@
 
 
   
-    <article id="post-备份" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/09/备份/">备份</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <img src="/2018/10/09/备份/rose.jpg" alt="rose" title="rose">
-<p>两周前为了今天买的玫瑰，终于还是被我给养成了这个样子，百合菊花们都活的好好的，就数她矫情。当时为了这束花，你还吃醋，我为了气你不能跟我一个过情人节骗你说是别人送的，结果你还真较上劲了，这束一开始就没被看好的玫瑰果然从那天起每况日下，换盐水喷清水都不管用，义无反顾的枯萎了。<br>然后我们也分手了，我数不清是第几次，但我想狠下心让它成为最后一次，你再回来求我我也不会心软了。</p>
-<p>早上说狠话的时候我心里想，这六年我无畏无悔，对你我也问心无愧。可后来仔细一想，我也并没有那么光明磊落，是我告诉你读完书就回去，是我又告诉你工作两年就回去，哪怕到了现在我说不知道几年才回去，你还是说等我。但我不想让你等我啊，为什么你不能来，那么多人都做得到，为什么你这么怂逼。这段感情从来都是我说了算的，只不过这一次你觉得自己办不到了，现在我觉得我有愧，但哪怕我这么觉悟了，也还是改不了我的决定。</p>
-<p>你也不是我心里的最佳伴侣，只不过这些年在一起习惯了，所以才看后来的那么多人都不如你。你真怂，你想做自己把握内的事情，你的人生观跟我这么不一样，我们注定不能一起冒险。我一定今后遇到的人都比你强，你却再也找不到比我好的。找不到嫁不出去就算了，人生这么艰难，找到一个相看不厌共度一生的人那么难，我找不到也正常。恩，我现在还是这么想的，let’s see。</p>
-<p>其实我想要的不多，两个人租一个一室一厅，养几盆花草，甚至过段日子养只猫猫狗狗，平时你上学我上班（我养你咯，暂时，但租的房子要离我公司近这是肯定的），周末天气如果好就开车出去玩（你带着我，我不要学开车），天气不好就窝在客厅沙发上看两部电影，看完交换一下观后感，心血来潮一起做顿好吃的，开瓶红酒，夏天夜晚坐在阳台慢慢喝。我知道你也想要，只不过我想让这些发生在纽约而你想让发生在成都，就这点差别。</p>
-<p>大概是智商不太高的缘故，你的脑回路总是跟别人不太一样。你像只鸵鸟，高兴的时候脖子仰起四处张望，好神奇。遇到搞不定的事情，就把头埋在沙子里，假装没有这件事，一切照旧但就是对这件事只字不提。我前几天逼你做个选择，你两三天不理我，好不容易蹦出一句话，为我为什么喜欢你，说你自己就像你妹妹那个小男朋友似的，配不上我。我很生气，我气你这是哪门子逻辑，我们走到这一步一点都不是感情的问题，是现实，是我的不妥协和你的做不到。我还气你，两三天没消息，我威胁要拉黑你都震不出来，好不容易有了点反应，却是这个破问题！我以为你去拯救世界了好吗。</p>
-<p>总之你还是那副死样子，我说那我们就再也不要联系，我受够了你的反复和纠结。刚说完你就把我也拉黑，大概是报复我先拉黑你，还有就是因为你又要逃避，我知道我说的那些话你一眼也不想多看。我真的受够了！可我知道你这么做就表示你并没有释怀，并没有想清楚这整件事情。但我不想解释了，你一旦钻进牛角尖，就刀枪不入五毒不侵，我奈何不了你，就随你去吧，反正分手从来就不是一件可以做的潇洒的事情。</p>
-<p>我遗憾啊，自己养了六年的一头猪如今要被别人拿去宰了吃。可我想来想去也没有别的办法，我有我想要的生活，在你的计划里我会过的不开心。但我习惯了有你，哪怕这三年隔着半个地球的异国。我不是一个坚强的人，我也怂，可我这个怂到家的人偏偏能从你这个更怂到家的人那里获得生活的勇气，也是奇怪。我也无奈啊，该说的都说了该做的都做了，来不来还是你的决定，我一点办法都没有，你要是敢往前走一步我就敢走两步，但你要放弃。</p>
-<p>这几年，别人约我去哪里玩或者吃好吃的，我都是拒绝，我不想跟他们一起，我想着等你来了我要跟你一起去，越长大越觉得很多事情要跟特定的人一起完成，不然一点意思都么的，还不如宅在家里，这也是我这几年越来越宅的原因。我想着要一起去很多地方，去吃好吃的东西，现在不要再等等，于是这么错过一个又一个，如今我们都分手了，却一件也没实现。从今往后，我要勇敢一点，没有人可等了，要学着自己去享受。</p>
-<p>就这么多吧，写这篇也是因为洗澡的时候想起来，突然有话要说。又哪能说的完呢，留给时间吧。祝我们都过上理想的生活。</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2018/10/09/备份/" class="archive-article-date">
-  	<time datetime="2018-10-10T02:19:01.000Z" itemprop="datePublished"><i class="icon-clock"></i>2018-10-09</time>
-</a>
-      
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -823,7 +862,7 @@
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/NLP/" style="font-size: 16px;">NLP</a> <a href="/tags/all/" style="font-size: 20px;">all</a> <a href="/tags/技术/" style="font-size: 14px;">技术</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/杂/" style="font-size: 18px;">杂</a> <a href="/tags/电影/" style="font-size: 12px;">电影</a> <a href="/tags/读书/" style="font-size: 14px;">读书</a> <a href="/tags/随想/" style="font-size: 16px;">随想</a>
+    				<a href="/tags/NLP/" style="font-size: 18px;">NLP</a> <a href="/tags/all/" style="font-size: 20px;">all</a> <a href="/tags/技术/" style="font-size: 14px;">技术</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/杂/" style="font-size: 18px;">杂</a> <a href="/tags/电影/" style="font-size: 12px;">电影</a> <a href="/tags/读书/" style="font-size: 14px;">读书</a> <a href="/tags/随想/" style="font-size: 16px;">随想</a>
     			</div>
     	</section>
     
